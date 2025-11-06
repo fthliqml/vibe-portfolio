@@ -1,0 +1,40 @@
+# Task ID: 13
+# Title: Add Page Transitions and Polish Animations
+# Status: pending
+# Dependencies: 4, 8, 9, 10, 11, 12
+# Priority: low
+# Description: Implement smooth page transitions using PageTransition component and polish all animations
+# Details:
+**1. Update app/layout.tsx:**
+- Wrap {children} with PageTransition component
+- Ensure proper AnimatePresence setup
+- Pass pathname as key for transitions
+
+**2. Polish existing animations:**
+- Review all FadeUpAnimation usages
+- Add stagger delays where appropriate (especially for lists/grids)
+- Ensure consistent transition durations (0.3s-0.5s)
+
+**3. Add micro-interactions:**
+- Button hover states (scale-105 or opacity changes)
+- Card hover lift animations
+- Icon hover rotations (Github, ExternalLink icons)
+- Smooth color transitions on all interactive elements
+
+**4. Optimize animation performance:**
+- Use transform and opacity for animations (GPU accelerated)
+- Avoid animating width/height directly
+- Add will-change: transform on animated elements if needed
+
+**5. Mobile-specific animations:**
+- Reduce motion on mobile (prefers-reduced-motion media query)
+- Simplify or disable complex animations on small screens
+- Test touch interactions
+
+**6. Scroll animations (optional bonus):**
+- Use Intersection Observer or Framer Motion's useInView
+- Fade in sections as they enter viewport
+- Parallax effect on hero photo (subtle)
+
+# Test Strategy:
+Page transitions smooth between all routes, no layout shifts, animations don't impact performance (60fps), mobile animations work well, no animation flicker

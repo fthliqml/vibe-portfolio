@@ -1,0 +1,25 @@
+# Task ID: 3
+# Title: Configure Tailwind Custom Colors and Google Fonts
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Extend Tailwind config with custom colors and configure Inter + Roboto Mono fonts
+# Details:
+**Update tailwind.config.ts:**
+Extend theme.colors with:
+- primary: '#007ACC'
+- secondary: '#00BFA6'
+- background: '#FFFFFF'
+- text: '#1F1F1F'
+- muted: '#F5F5F5'
+
+**Update app/layout.tsx:**
+Import from next/font/google:
+- Inter (subsets: ["latin"], variable: "--font-inter")
+- Roboto Mono (subsets: ["latin"], variable: "--font-mono")
+
+Apply font variables to HTML element className
+Configure Tailwind to use font variables in theme.fontFamily
+
+# Test Strategy:
+Verify custom colors work (bg-primary, text-secondary), fonts render correctly in browser, monospace font applied to code elements

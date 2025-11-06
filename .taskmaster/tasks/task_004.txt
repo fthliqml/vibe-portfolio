@@ -1,0 +1,30 @@
+# Task ID: 4
+# Title: Create Framer Motion Animation Components
+# Status: pending
+# Dependencies: None
+# Priority: medium
+# Description: Build reusable animation wrapper components following motion.instruction.md guidelines
+# Details:
+Create components in src/components/animations/:
+
+**1. FadeUpAnimation.tsx:**
+- "use client" directive
+- fadeUpVariant: hidden (opacity: 0, y: 32), visible (opacity: 1, y: 0, duration: 0.5)
+- Takes children prop (ReactNode type)
+
+**2. PageTransition.tsx:**
+- "use client" directive
+- Uses AnimatePresence with mode="wait"
+- pageVariants: hidden, visible, exit with proper transitions
+- Wraps page content for smooth transitions
+
+Best practices from motion.instruction.md:
+- Always use "use client" directive
+- Define variants outside component
+- Use TypeScript for props (ReactNode for children)
+- Avoid useEffect for animations
+- Use simple duration-based transitions (no string easing names)
+- Proper AnimatePresence with unique key props
+
+# Test Strategy:
+Test animations render smoothly, no hydration errors, no TypeScript errors, transitions work without console warnings

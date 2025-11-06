@@ -1,0 +1,52 @@
+# Task ID: 8
+# Title: Implement Home Page with Dual Hero Section
+# Status: pending
+# Dependencies: 1, 2, 3, 4, 5, 6, 7
+# Priority: high
+# Description: Build complete home page with unique Hero section (Front-End | Photo | Back-End), Latest Projects, and CTAs
+# Details:
+Update app/page.tsx:
+
+**Hero Section (Unique "Dual Expertise" Design):**
+Layout: grid grid-cols-1 md:grid-cols-3 gap-8 items-center
+- **Left Column (Front-End):**
+  - Title: "Front-End Developer"
+  - Description: "Membangun antarmuka yang interaktif dan estetis"
+  - Icons: Code2, Sparkles from lucide-react
+  - Styling: Modern sans-serif (Inter), primary blue accent
+  - Background: subtle blue gradient (from-blue-50)
+  
+- **Center Column (Photo):**
+  - Image: /images/me.png (Next.js Image, 300-400px, rounded-full)
+  - Border lines: border-l border-r border-zinc-200
+  - Priority loading
+  
+- **Right Column (Back-End):**
+  - Title: "Back-End Developer"
+  - Description: "Mengelola logika sistem dan arsitektur data yang efisien"
+  - Semi-transparent code snippets: express(), fetch('/api'), prisma.user.findMany()
+  - Styling: Monospaced font (Roboto Mono), secondary teal accent
+  - Background: subtle teal gradient (from-teal-50)
+
+**Latest Projects Section:**
+- Title: "Latest Projects"
+- Get projects: getFeaturedProjects() (3 projects)
+- Grid: grid-cols-1 md:grid-cols-3 gap-6
+- Use ProjectCard component
+- Button: "View All Projects" → Link to /projects
+
+**Contact CTA:**
+- Simple centered section
+- Heading: "Let's Work Together"
+- Button: "Get in Touch" → Link to /contact
+
+**Animations:**
+- Wrap sections in FadeUpAnimation
+- Stagger delay for project cards
+
+**Responsive:**
+- Stack on mobile (grid-cols-1)
+- 3 columns on desktop (md:grid-cols-3)
+
+# Test Strategy:
+Hero displays dual expertise correctly, profile photo loads with proper alt text, featured projects show, CTAs link correctly, animations work smoothly, responsive on mobile/tablet/desktop

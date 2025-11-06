@@ -1,0 +1,48 @@
+# Task ID: 9
+# Title: Implement About Page
+# Status: pending
+# Dependencies: 1, 2, 3, 5, 6, 7
+# Priority: medium
+# Description: Build About page with bio, skills grid, and optional experience timeline
+# Details:
+Create app/about/page.tsx with metadata export:
+
+**Metadata:**
+```typescript
+export const metadata = {
+  title: "About | M. Fatihul Iqmal",
+  description: "Learn about my journey as a full-stack developer",
+};
+```
+
+**Layout:**
+Header: "About Me" with subtitle
+Content: Grid 2 columns on desktop, stack on mobile
+
+**Left Column:**
+- Long bio from personalInfo.bio
+- Additional paragraphs about journey, philosophy
+- text-lg leading-relaxed text-zinc-600
+
+**Right Column:**
+- Mini portrait or illustration (can reuse me.png)
+- Or: highlighted stats/facts about development
+
+**Skills Section:**
+- Two subsections: "Front-End Skills" and "Back-End Skills"
+- Grid: grid-cols-2 md:grid-cols-3 gap-4
+- Use SkillCard component for each skill
+- Skills from frontendSkills and backendSkills data
+
+**Experience Section (Optional):**
+- Timeline or simple list
+- Focus on key achievements
+- Can be placeholder initially
+
+**Styling:**
+- Container: max-w-7xl mx-auto px-6 py-20
+- Section spacing: space-y-16
+- Responsive: stack on mobile
+
+# Test Strategy:
+Page renders with correct metadata, bio displays fully, skills grid shows all items, icons load correctly, responsive layout works, animations smooth

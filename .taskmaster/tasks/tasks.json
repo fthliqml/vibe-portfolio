@@ -1,0 +1,222 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup Data Structure and TypeScript Types",
+        "description": "Create all data files with TypeScript types for personal info, skills, projects, and social links in src/data/",
+        "details": "Create the following files:\n\n**src/types/index.ts:**\n- SkillLevel type: \"Beginner\" | \"Intermediate\" | \"Advanced\" | \"Expert\"\n- ProjectCategory type: \"Front-End\" | \"Back-End\" | \"Fullstack\"\n- Skill interface (name, level, icon)\n- Project interface (id, title, category, role, description, longDescription, tech, image, demoUrl, repoUrl, year, featured)\n- SocialLink interface (url, icon, label)\n\n**src/data/personal.ts:**\n- personalInfo object with: name, title, tagline, bio, email, location, availability\n\n**src/data/skills.ts:**\n- frontendSkills array (React, Next.js, TypeScript, Tailwind, Framer Motion)\n- backendSkills array (Node.js, Express, Prisma, PostgreSQL, REST API)\n- allSkills object combining both\n\n**src/data/projects.ts:**\n- projects array with 6 projects minimum\n- Helper functions: getFeaturedProjects(), getProjectById(id), getProjectsByCategory(category)\n\n**src/data/socials.ts:**\n- socials object with github, linkedin, twitter, email\n- socialLinks array for easy mapping\n\nUse placeholder data from data.instruction.md",
+        "testStrategy": "Verify all files created, TypeScript compiles without errors, data can be imported in components, helper functions return expected results",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Setup Assets Folder and Placeholder Images",
+        "description": "Create public/images folder structure with placeholder images for profile and projects",
+        "details": "Create folder structure:\n- public/images/\n- public/images/me.png (profile photo, 400x400px minimum)\n- public/images/project.jpg (project placeholder, 800x600px minimum)\n- public/images/projects/ (optional for individual project images)\n\nGuidelines:\n- Use placeholder images initially\n- Profile photo should be square (400x400px+)\n- Project thumbnails should be landscape (800x600px+)\n- Consider WebP format for optimization\n- All images will use Next.js Image component with proper alt text",
+        "testStrategy": "Verify folder structure exists, images are accessible via /images/me.png and /images/project.jpg, Next.js can load images without errors",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Configure Tailwind Custom Colors and Google Fonts",
+        "description": "Extend Tailwind config with custom colors and configure Inter + Roboto Mono fonts",
+        "details": "**Update tailwind.config.ts:**\nExtend theme.colors with:\n- primary: '#007ACC'\n- secondary: '#00BFA6'\n- background: '#FFFFFF'\n- text: '#1F1F1F'\n- muted: '#F5F5F5'\n\n**Update app/layout.tsx:**\nImport from next/font/google:\n- Inter (subsets: [\"latin\"], variable: \"--font-inter\")\n- Roboto Mono (subsets: [\"latin\"], variable: \"--font-mono\")\n\nApply font variables to HTML element className\nConfigure Tailwind to use font variables in theme.fontFamily",
+        "testStrategy": "Verify custom colors work (bg-primary, text-secondary), fonts render correctly in browser, monospace font applied to code elements",
+        "status": "pending",
+        "dependencies": [
+          1
+        ],
+        "priority": "high",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Create Framer Motion Animation Components",
+        "description": "Build reusable animation wrapper components following motion.instruction.md guidelines",
+        "details": "Create components in src/components/animations/:\n\n**1. FadeUpAnimation.tsx:**\n- \"use client\" directive\n- fadeUpVariant: hidden (opacity: 0, y: 32), visible (opacity: 1, y: 0, duration: 0.5)\n- Takes children prop (ReactNode type)\n\n**2. PageTransition.tsx:**\n- \"use client\" directive\n- Uses AnimatePresence with mode=\"wait\"\n- pageVariants: hidden, visible, exit with proper transitions\n- Wraps page content for smooth transitions\n\nBest practices from motion.instruction.md:\n- Always use \"use client\" directive\n- Define variants outside component\n- Use TypeScript for props (ReactNode for children)\n- Avoid useEffect for animations\n- Use simple duration-based transitions (no string easing names)\n- Proper AnimatePresence with unique key props",
+        "testStrategy": "Test animations render smoothly, no hydration errors, no TypeScript errors, transitions work without console warnings",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Build Reusable UI Components",
+        "description": "Create component library including ProjectCard, SkillCard, Button variants, and SocialIcon",
+        "details": "Create components in src/components/:\n\n**1. ProjectCard.tsx:**\n- Props: project (Project type)\n- Next.js Image for thumbnail with fill + object-cover\n- Category badge, title, short description\n- Tech stack tags (map over tech array)\n- Links (Demo & Repo) with lucide-react icons (ExternalLink, Github)\n- Hover: lift with shadow transition\n- Styling: rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow\n\n**2. SkillCard.tsx:**\n- Props: skill (Skill type)\n- Icon from lucide-react (dynamic icon based on skill.icon)\n- Display skill name and level\n- Clean card design matching ProjectCard style\n\n**3. Button.tsx:**\n- Variants: primary, secondary\n- Primary: rounded-full bg-primary px-6 py-3 text-white hover:bg-primary/90\n- Secondary: rounded-full border border-zinc-200 px-6 py-3 hover:bg-zinc-50\n- Props: variant, href (optional), onClick (optional), children\n\n**4. SocialIcon.tsx:**\n- Props: social (SocialLink type)\n- Dynamic icon from lucide-react based on social.icon\n- Link with target=\"_blank\" rel=\"noopener noreferrer\"\n- Hover: scale + color change (hover:scale-110 hover:text-primary)\n- Transition: transition-all duration-300",
+        "testStrategy": "All components render with proper types, hover effects work, Next.js Image optimization works, lucide-react icons display correctly, no TypeScript errors",
+        "status": "pending",
+        "dependencies": [
+          1,
+          4
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Build Header/Navigation Component",
+        "description": "Create fixed header with navigation links, active state detection, and mobile hamburger menu",
+        "details": "Create src/components/Header.tsx:\n\n**Layout:**\n- Fixed position at top (fixed top-0 w-full z-50)\n- Logo/Name on left\n- Nav links on right: Home, Projects, About, Contact\n- Hamburger menu for mobile (<768px)\n\n**Styling:**\n- bg-white/80 backdrop-blur-md\n- border-b border-zinc-200\n- Nav links: text-sm font-medium text-zinc-600 hover:text-zinc-900\n- Active state: underline or bg-zinc-100 rounded-full px-3 py-1\n\n**Features:**\n- Use next/navigation usePathname() for active state\n- Next.js Link component for navigation\n- Mobile: hamburger icon (lucide-react Menu/X)\n- Mobile menu: slide-in from top or side with AnimatePresence\n- Smooth transitions (transition-colors duration-300)\n\n**Responsive:**\n- Desktop: flex-row gap-8\n- Mobile: hamburger + full-screen menu overlay",
+        "testStrategy": "Navigation works on all pages, active state highlights correctly, mobile menu opens/closes smoothly, backdrop blur renders, no layout shift on scroll",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Build Footer Component",
+        "description": "Create simple footer with copyright, social icons, and optional quick links",
+        "details": "Create src/components/Footer.tsx:\n\n**Content:**\n- Copyright: © 2025 M. Fatihul Iqmal. All rights reserved.\n- Social icons using SocialIcon component (map over socialLinks from data/socials.ts)\n- Optional quick links: Projects, About, Contact\n\n**Layout:**\n- Center-aligned on mobile\n- 2-3 columns on desktop (md:grid md:grid-cols-3)\n- Stack on mobile (flex flex-col)\n\n**Styling:**\n- py-12 px-6 border-t border-zinc-200\n- text-center md:text-left\n- text-sm text-zinc-500\n- Social icons: flex gap-4 justify-center md:justify-start\n- Hover effects on links: hover:text-zinc-900 transition-colors",
+        "testStrategy": "Footer displays on all pages, social links open correctly in new tabs, responsive layout works, copyright year is dynamic",
+        "status": "pending",
+        "dependencies": [
+          1,
+          5
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement Home Page with Dual Hero Section",
+        "description": "Build complete home page with unique Hero section (Front-End | Photo | Back-End), Latest Projects, and CTAs",
+        "details": "Update app/page.tsx:\n\n**Hero Section (Unique \"Dual Expertise\" Design):**\nLayout: grid grid-cols-1 md:grid-cols-3 gap-8 items-center\n- **Left Column (Front-End):**\n  - Title: \"Front-End Developer\"\n  - Description: \"Membangun antarmuka yang interaktif dan estetis\"\n  - Icons: Code2, Sparkles from lucide-react\n  - Styling: Modern sans-serif (Inter), primary blue accent\n  - Background: subtle blue gradient (from-blue-50)\n  \n- **Center Column (Photo):**\n  - Image: /images/me.png (Next.js Image, 300-400px, rounded-full)\n  - Border lines: border-l border-r border-zinc-200\n  - Priority loading\n  \n- **Right Column (Back-End):**\n  - Title: \"Back-End Developer\"\n  - Description: \"Mengelola logika sistem dan arsitektur data yang efisien\"\n  - Semi-transparent code snippets: express(), fetch('/api'), prisma.user.findMany()\n  - Styling: Monospaced font (Roboto Mono), secondary teal accent\n  - Background: subtle teal gradient (from-teal-50)\n\n**Latest Projects Section:**\n- Title: \"Latest Projects\"\n- Get projects: getFeaturedProjects() (3 projects)\n- Grid: grid-cols-1 md:grid-cols-3 gap-6\n- Use ProjectCard component\n- Button: \"View All Projects\" → Link to /projects\n\n**Contact CTA:**\n- Simple centered section\n- Heading: \"Let's Work Together\"\n- Button: \"Get in Touch\" → Link to /contact\n\n**Animations:**\n- Wrap sections in FadeUpAnimation\n- Stagger delay for project cards\n\n**Responsive:**\n- Stack on mobile (grid-cols-1)\n- 3 columns on desktop (md:grid-cols-3)",
+        "testStrategy": "Hero displays dual expertise correctly, profile photo loads with proper alt text, featured projects show, CTAs link correctly, animations work smoothly, responsive on mobile/tablet/desktop",
+        "status": "pending",
+        "dependencies": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "priority": "high",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Implement About Page",
+        "description": "Build About page with bio, skills grid, and optional experience timeline",
+        "details": "Create app/about/page.tsx with metadata export:\n\n**Metadata:**\n```typescript\nexport const metadata = {\n  title: \"About | M. Fatihul Iqmal\",\n  description: \"Learn about my journey as a full-stack developer\",\n};\n```\n\n**Layout:**\nHeader: \"About Me\" with subtitle\nContent: Grid 2 columns on desktop, stack on mobile\n\n**Left Column:**\n- Long bio from personalInfo.bio\n- Additional paragraphs about journey, philosophy\n- text-lg leading-relaxed text-zinc-600\n\n**Right Column:**\n- Mini portrait or illustration (can reuse me.png)\n- Or: highlighted stats/facts about development\n\n**Skills Section:**\n- Two subsections: \"Front-End Skills\" and \"Back-End Skills\"\n- Grid: grid-cols-2 md:grid-cols-3 gap-4\n- Use SkillCard component for each skill\n- Skills from frontendSkills and backendSkills data\n\n**Experience Section (Optional):**\n- Timeline or simple list\n- Focus on key achievements\n- Can be placeholder initially\n\n**Styling:**\n- Container: max-w-7xl mx-auto px-6 py-20\n- Section spacing: space-y-16\n- Responsive: stack on mobile",
+        "testStrategy": "Page renders with correct metadata, bio displays fully, skills grid shows all items, icons load correctly, responsive layout works, animations smooth",
+        "status": "pending",
+        "dependencies": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Implement Projects List Page with Filtering",
+        "description": "Build Projects page with grid layout, category filtering, and project cards",
+        "details": "Create app/projects/page.tsx:\n\n**Metadata:**\n```typescript\nexport const metadata = {\n  title: \"Projects | M. Fatihul Iqmal\",\n  description: \"Explore my portfolio of full-stack development projects\",\n};\n```\n\n**Header:**\n- Title: \"Projects\"\n- Optional description/subtitle\n\n**Filter Section:**\n- Filter buttons: All, Front-End, Back-End, Fullstack\n- State: useState for active filter\n- Buttons styled: rounded-full border hover effects\n- Active button: bg-primary text-white\n\n**Projects Grid:**\n- Get filtered projects based on active filter\n- Grid: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6\n- Use ProjectCard component\n- Empty state: \"No projects found\" if filtered results empty\n\n**Interactions:**\n- Filter buttons update active state\n- Projects re-render based on filter\n- Smooth transitions between filter changes (AnimatePresence)\n\n**Animations:**\n- FadeUpAnimation wrapper\n- Stagger effect for project cards (layout animation)\n\n**Client Component:**\n- Mark as \"use client\" for filter state management",
+        "testStrategy": "All projects display initially, filters work correctly, category filtering accurate, empty state shows when needed, animations smooth, responsive grid",
+        "status": "pending",
+        "dependencies": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "Implement Project Detail Page (Dynamic Route)",
+        "description": "Build dynamic project detail page at /projects/[id] with full project information and navigation",
+        "details": "Create app/projects/[id]/page.tsx:\n\n**Dynamic Metadata:**\n```typescript\nexport async function generateMetadata({ params }: { params: { id: string } }) {\n  const project = getProjectById(params.id);\n  if (!project) return { title: \"Project Not Found\" };\n  return {\n    title: `${project.title} | M. Fatihul Iqmal`,\n    description: project.description,\n  };\n}\n```\n\n**Page Structure:**\n\n1. **Header Section:**\n   - Back button (← Projects) Link to /projects\n   - Title (text-4xl font-bold)\n   - Category badge\n   - Year\n\n2. **Hero Image:**\n   - Large preview: Next.js Image with fill, aspect-video\n   - Alt text from project.title\n\n3. **Overview Grid (2 columns on desktop):**\n   \n   **Left Column:**\n   - Long description (project.longDescription)\n   - Role & responsibilities\n   - Challenges & solutions (can add to Project type or use longDescription)\n   \n   **Right Column (Sidebar):**\n   - Tech stack with icons (map over project.tech)\n   - Links: Demo, Repository with icons (ExternalLink, Github)\n   - Year & duration\n   - Key features list (if available)\n\n4. **Navigation:**\n   - Previous/Next project buttons at bottom\n   - Calculate prev/next from projects array\n   - Disabled state if no prev/next\n\n**404 Handling:**\n- If project not found (getProjectById returns undefined)\n- Show \"Project Not Found\" with link back to /projects\n\n**Styling:**\n- Container: max-w-6xl mx-auto px-6 py-20\n- Section spacing: space-y-12\n- Responsive: stack columns on mobile",
+        "testStrategy": "Dynamic routes work for all project IDs, metadata generates correctly, images load properly, links open in new tabs, prev/next navigation works, 404 shows for invalid IDs, responsive layout",
+        "status": "pending",
+        "dependencies": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 12,
+        "title": "Implement Contact Page with Form and Social Links",
+        "description": "Build Contact page with form, social links grid, and additional contact info",
+        "details": "Create app/contact/page.tsx:\n\n**Metadata:**\n```typescript\nexport const metadata = {\n  title: \"Contact | M. Fatihul Iqmal\",\n  description: \"Get in touch for opportunities and collaborations\",\n};\n```\n\n**Layout:**\n- Header: \"Get in Touch\" (text-4xl font-bold)\n- Center-aligned content, max-width 600px\n\n**Contact Form:**\nClient component for form handling\nFields:\n- Name (input, required)\n- Email (input type=\"email\", required)\n- Message (textarea rows=\"6\", required)\n- Submit button (Button component, primary variant)\n\nForm handling:\n- useState for form data\n- onSubmit: e.preventDefault() + console.log for now\n- Can integrate email service later (e.g., Resend, SendGrid)\n\nStyling:\n- Inputs: rounded-lg border border-zinc-200 px-4 py-3 focus:border-primary focus:outline-none\n- Labels: text-sm font-medium text-zinc-700 mb-2\n- Form: space-y-4\n\n**Social Links Section:**\n- Title: \"Or Connect With Me\"\n- Grid: flex gap-4 justify-center\n- Use SocialIcon component for each social link\n- socialLinks from data/socials.ts\n\n**Additional Info:**\n- Email: mailto link (Mail icon + personalInfo.email)\n- Location: personalInfo.location\n- Availability: personalInfo.availability\n- Style: text-sm text-zinc-600\n\n**Animations:**\n- FadeUpAnimation wrapper\n- Form submission: loading state on button",
+        "testStrategy": "Form renders correctly, validation works (required fields), social icons link properly, email mailto works, responsive layout, animations smooth, form can be submitted (console log works)",
+        "status": "pending",
+        "dependencies": [
+          1,
+          3,
+          5,
+          6,
+          7
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Add Page Transitions and Polish Animations",
+        "description": "Implement smooth page transitions using PageTransition component and polish all animations",
+        "details": "**1. Update app/layout.tsx:**\n- Wrap {children} with PageTransition component\n- Ensure proper AnimatePresence setup\n- Pass pathname as key for transitions\n\n**2. Polish existing animations:**\n- Review all FadeUpAnimation usages\n- Add stagger delays where appropriate (especially for lists/grids)\n- Ensure consistent transition durations (0.3s-0.5s)\n\n**3. Add micro-interactions:**\n- Button hover states (scale-105 or opacity changes)\n- Card hover lift animations\n- Icon hover rotations (Github, ExternalLink icons)\n- Smooth color transitions on all interactive elements\n\n**4. Optimize animation performance:**\n- Use transform and opacity for animations (GPU accelerated)\n- Avoid animating width/height directly\n- Add will-change: transform on animated elements if needed\n\n**5. Mobile-specific animations:**\n- Reduce motion on mobile (prefers-reduced-motion media query)\n- Simplify or disable complex animations on small screens\n- Test touch interactions\n\n**6. Scroll animations (optional bonus):**\n- Use Intersection Observer or Framer Motion's useInView\n- Fade in sections as they enter viewport\n- Parallax effect on hero photo (subtle)",
+        "testStrategy": "Page transitions smooth between all routes, no layout shifts, animations don't impact performance (60fps), mobile animations work well, no animation flicker",
+        "status": "pending",
+        "dependencies": [
+          4,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "priority": "low",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Test Responsiveness and Optimize Performance",
+        "description": "Comprehensive testing across devices and performance optimization",
+        "details": "**1. Responsive Testing:**\nTest breakpoints:\n- Mobile: 375px, 414px (iPhone sizes)\n- Tablet: 768px, 1024px (iPad sizes)\n- Desktop: 1280px, 1920px\n\nCheck:\n- All pages render correctly on all sizes\n- Navigation menu works on mobile\n- Images scale properly\n- Text remains readable\n- No horizontal scroll\n- Touch targets adequate (min 44x44px)\n\n**2. Performance Optimization:**\n\nImages:\n- Verify Next.js Image optimization working\n- Add width/height or fill prop to all Images\n- Use priority on above-the-fold images\n- Lazy load below-the-fold content\n\nFonts:\n- Verify font-display: swap\n- Check font loading doesn't cause layout shift\n\nCode splitting:\n- Verify dynamic imports where beneficial\n- Check bundle size (npm run build)\n- Analyze with Next.js bundle analyzer if needed\n\n**3. Accessibility:**\n- Add proper alt text to all images\n- Ensure semantic HTML (h1, h2, nav, main, footer)\n- Check keyboard navigation works\n- Test with screen reader (basic check)\n- Color contrast ratios meet WCAG AA\n\n**4. SEO:**\n- Verify all pages have metadata\n- Check Open Graph tags\n- Add sitemap.xml (Next.js can generate)\n- Add robots.txt\n\n**5. Performance Metrics:**\n- Run Lighthouse audit (target 90+ on all)\n- Check Core Web Vitals (LCP, FID, CLS)\n- Test on slow 3G connection\n- Optimize if needed\n\n**6. Cross-browser Testing:**\n- Chrome, Firefox, Safari, Edge\n- Mobile Safari, Chrome Mobile\n- Check for any browser-specific issues",
+        "testStrategy": "All breakpoints tested and work, Lighthouse scores 90+, no accessibility errors, SEO metadata complete, fonts load without FOUT, images optimized, no console errors",
+        "status": "pending",
+        "dependencies": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "priority": "medium",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-11-06T14:22:39.243Z",
+      "description": "Default tasks context",
+      "updated": "2025-11-06T14:22:39.268Z"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# Task ID: 1
+# Title: Setup Data Structure and TypeScript Types
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Create all data files with TypeScript types for personal info, skills, projects, and social links in src/data/
+# Details:
+Create the following files:
+
+**src/types/index.ts:**
+- SkillLevel type: "Beginner" | "Intermediate" | "Advanced" | "Expert"
+- ProjectCategory type: "Front-End" | "Back-End" | "Fullstack"
+- Skill interface (name, level, icon)
+- Project interface (id, title, category, role, description, longDescription, tech, image, demoUrl, repoUrl, year, featured)
+- SocialLink interface (url, icon, label)
+
+**src/data/personal.ts:**
+- personalInfo object with: name, title, tagline, bio, email, location, availability
+
+**src/data/skills.ts:**
+- frontendSkills array (React, Next.js, TypeScript, Tailwind, Framer Motion)
+- backendSkills array (Node.js, Express, Prisma, PostgreSQL, REST API)
+- allSkills object combining both
+
+**src/data/projects.ts:**
+- projects array with 6 projects minimum
+- Helper functions: getFeaturedProjects(), getProjectById(id), getProjectsByCategory(category)
+
+**src/data/socials.ts:**
+- socials object with github, linkedin, twitter, email
+- socialLinks array for easy mapping
+
+Use placeholder data from data.instruction.md
+
+# Test Strategy:
+Verify all files created, TypeScript compiles without errors, data can be imported in components, helper functions return expected results

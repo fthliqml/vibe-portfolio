@@ -1,0 +1,39 @@
+# Task ID: 5
+# Title: Build Reusable UI Components
+# Status: pending
+# Dependencies: 1, 4
+# Priority: medium
+# Description: Create component library including ProjectCard, SkillCard, Button variants, and SocialIcon
+# Details:
+Create components in src/components/:
+
+**1. ProjectCard.tsx:**
+- Props: project (Project type)
+- Next.js Image for thumbnail with fill + object-cover
+- Category badge, title, short description
+- Tech stack tags (map over tech array)
+- Links (Demo & Repo) with lucide-react icons (ExternalLink, Github)
+- Hover: lift with shadow transition
+- Styling: rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow
+
+**2. SkillCard.tsx:**
+- Props: skill (Skill type)
+- Icon from lucide-react (dynamic icon based on skill.icon)
+- Display skill name and level
+- Clean card design matching ProjectCard style
+
+**3. Button.tsx:**
+- Variants: primary, secondary
+- Primary: rounded-full bg-primary px-6 py-3 text-white hover:bg-primary/90
+- Secondary: rounded-full border border-zinc-200 px-6 py-3 hover:bg-zinc-50
+- Props: variant, href (optional), onClick (optional), children
+
+**4. SocialIcon.tsx:**
+- Props: social (SocialLink type)
+- Dynamic icon from lucide-react based on social.icon
+- Link with target="_blank" rel="noopener noreferrer"
+- Hover: scale + color change (hover:scale-110 hover:text-primary)
+- Transition: transition-all duration-300
+
+# Test Strategy:
+All components render with proper types, hover effects work, Next.js Image optimization works, lucide-react icons display correctly, no TypeScript errors

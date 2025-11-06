@@ -1,0 +1,62 @@
+# Task ID: 11
+# Title: Implement Project Detail Page (Dynamic Route)
+# Status: pending
+# Dependencies: 1, 2, 3, 5, 6, 7
+# Priority: medium
+# Description: Build dynamic project detail page at /projects/[id] with full project information and navigation
+# Details:
+Create app/projects/[id]/page.tsx:
+
+**Dynamic Metadata:**
+```typescript
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const project = getProjectById(params.id);
+  if (!project) return { title: "Project Not Found" };
+  return {
+    title: `${project.title} | M. Fatihul Iqmal`,
+    description: project.description,
+  };
+}
+```
+
+**Page Structure:**
+
+1. **Header Section:**
+   - Back button (← Projects) Link to /projects
+   - Title (text-4xl font-bold)
+   - Category badge
+   - Year
+
+2. **Hero Image:**
+   - Large preview: Next.js Image with fill, aspect-video
+   - Alt text from project.title
+
+3. **Overview Grid (2 columns on desktop):**
+   
+   **Left Column:**
+   - Long description (project.longDescription)
+   - Role & responsibilities
+   - Challenges & solutions (can add to Project type or use longDescription)
+   
+   **Right Column (Sidebar):**
+   - Tech stack with icons (map over project.tech)
+   - Links: Demo, Repository with icons (ExternalLink, Github)
+   - Year & duration
+   - Key features list (if available)
+
+4. **Navigation:**
+   - Previous/Next project buttons at bottom
+   - Calculate prev/next from projects array
+   - Disabled state if no prev/next
+
+**404 Handling:**
+- If project not found (getProjectById returns undefined)
+- Show "Project Not Found" with link back to /projects
+
+**Styling:**
+- Container: max-w-6xl mx-auto px-6 py-20
+- Section spacing: space-y-12
+- Responsive: stack columns on mobile
+
+# Test Strategy:
+Dynamic routes work for all project IDs, metadata generates correctly, images load properly, links open in new tabs, prev/next navigation works, 404 shows for invalid IDs, responsive layout

@@ -1,0 +1,34 @@
+# Task ID: 6
+# Title: Build Header/Navigation Component
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Create fixed header with navigation links, active state detection, and mobile hamburger menu
+# Details:
+Create src/components/Header.tsx:
+
+**Layout:**
+- Fixed position at top (fixed top-0 w-full z-50)
+- Logo/Name on left
+- Nav links on right: Home, Projects, About, Contact
+- Hamburger menu for mobile (<768px)
+
+**Styling:**
+- bg-white/80 backdrop-blur-md
+- border-b border-zinc-200
+- Nav links: text-sm font-medium text-zinc-600 hover:text-zinc-900
+- Active state: underline or bg-zinc-100 rounded-full px-3 py-1
+
+**Features:**
+- Use next/navigation usePathname() for active state
+- Next.js Link component for navigation
+- Mobile: hamburger icon (lucide-react Menu/X)
+- Mobile menu: slide-in from top or side with AnimatePresence
+- Smooth transitions (transition-colors duration-300)
+
+**Responsive:**
+- Desktop: flex-row gap-8
+- Mobile: hamburger + full-screen menu overlay
+
+# Test Strategy:
+Navigation works on all pages, active state highlights correctly, mobile menu opens/closes smoothly, backdrop blur renders, no layout shift on scroll

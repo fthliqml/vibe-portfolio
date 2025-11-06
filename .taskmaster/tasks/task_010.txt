@@ -1,0 +1,47 @@
+# Task ID: 10
+# Title: Implement Projects List Page with Filtering
+# Status: pending
+# Dependencies: 1, 2, 3, 5, 6, 7
+# Priority: medium
+# Description: Build Projects page with grid layout, category filtering, and project cards
+# Details:
+Create app/projects/page.tsx:
+
+**Metadata:**
+```typescript
+export const metadata = {
+  title: "Projects | M. Fatihul Iqmal",
+  description: "Explore my portfolio of full-stack development projects",
+};
+```
+
+**Header:**
+- Title: "Projects"
+- Optional description/subtitle
+
+**Filter Section:**
+- Filter buttons: All, Front-End, Back-End, Fullstack
+- State: useState for active filter
+- Buttons styled: rounded-full border hover effects
+- Active button: bg-primary text-white
+
+**Projects Grid:**
+- Get filtered projects based on active filter
+- Grid: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6
+- Use ProjectCard component
+- Empty state: "No projects found" if filtered results empty
+
+**Interactions:**
+- Filter buttons update active state
+- Projects re-render based on filter
+- Smooth transitions between filter changes (AnimatePresence)
+
+**Animations:**
+- FadeUpAnimation wrapper
+- Stagger effect for project cards (layout animation)
+
+**Client Component:**
+- Mark as "use client" for filter state management
+
+# Test Strategy:
+All projects display initially, filters work correctly, category filtering accurate, empty state shows when needed, animations smooth, responsive grid

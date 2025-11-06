@@ -1,0 +1,22 @@
+# Task ID: 2
+# Title: Setup Assets Folder and Placeholder Images
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Create public/images folder structure with placeholder images for profile and projects
+# Details:
+Create folder structure:
+- public/images/
+- public/images/me.png (profile photo, 400x400px minimum)
+- public/images/project.jpg (project placeholder, 800x600px minimum)
+- public/images/projects/ (optional for individual project images)
+
+Guidelines:
+- Use placeholder images initially
+- Profile photo should be square (400x400px+)
+- Project thumbnails should be landscape (800x600px+)
+- Consider WebP format for optimization
+- All images will use Next.js Image component with proper alt text
+
+# Test Strategy:
+Verify folder structure exists, images are accessible via /images/me.png and /images/project.jpg, Next.js can load images without errors

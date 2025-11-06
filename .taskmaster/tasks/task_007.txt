@@ -1,0 +1,28 @@
+# Task ID: 7
+# Title: Build Footer Component
+# Status: pending
+# Dependencies: 1, 5
+# Priority: medium
+# Description: Create simple footer with copyright, social icons, and optional quick links
+# Details:
+Create src/components/Footer.tsx:
+
+**Content:**
+- Copyright: © 2025 M. Fatihul Iqmal. All rights reserved.
+- Social icons using SocialIcon component (map over socialLinks from data/socials.ts)
+- Optional quick links: Projects, About, Contact
+
+**Layout:**
+- Center-aligned on mobile
+- 2-3 columns on desktop (md:grid md:grid-cols-3)
+- Stack on mobile (flex flex-col)
+
+**Styling:**
+- py-12 px-6 border-t border-zinc-200
+- text-center md:text-left
+- text-sm text-zinc-500
+- Social icons: flex gap-4 justify-center md:justify-start
+- Hover effects on links: hover:text-zinc-900 transition-colors
+
+# Test Strategy:
+Footer displays on all pages, social links open correctly in new tabs, responsive layout works, copyright year is dynamic
