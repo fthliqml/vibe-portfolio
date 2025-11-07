@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { LogoIcon, LinkedInIcon, InstagramIcon, MailIcon } from './Icons';
+import { LinkedInIcon, InstagramIcon, MailIcon } from './Icons';
 import { personalInfo } from '@/data/personal';
 
 export default function Header() {
