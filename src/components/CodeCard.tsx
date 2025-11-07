@@ -107,7 +107,7 @@ export default function CodeCard({ title, code, language = 'typescript', animate
           {parts.length > 0 ? parts : <span>{line}</span>}
           {/* Cursor at end of last line */}
           {showCursor && isLastLine && (
-            <span className="inline-block w-2 h-3 sm:h-4 bg-gray-400 ml-1 animate-blink"></span>
+            <span className="inline-block w-2 h-3 sm:h-4 bg-gray-400 ml-1 align-middle animate-blink"></span>
           )}
         </div>
       );
