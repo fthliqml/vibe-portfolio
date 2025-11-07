@@ -55,7 +55,7 @@
         "description": "Build reusable CodeCard component for displaying code snippets in hero section",
         "details": "Create `src/components/CodeCard.tsx`:\n\n**Visual Design:**\n```\n┌────────────────────┐\n│ ● ● ●   Title      │ ← Header (macOS style)\n├────────────────────┤\n│ import { React }   │\n│ from 'react';      │ ← Code content\n│                    │\n│ export const...    │\n└────────────────────┘\n```\n\n**Props:**\n```typescript\ntype CodeCardProps = {\n  title: string;\n  code: string; // Raw code string\n  language?: 'typescript' | 'javascript';\n};\n```\n\n**Styling:**\n- Background: `bg-[#282c34]` (dark code editor)\n- Border radius: `rounded-lg`\n- Shadow: `shadow-xl`\n- Header: `bg-gray-700` with 3 dots (red, yellow, green)\n- Code font: `font-mono text-sm`\n- Line height: `leading-relaxed`\n\n**Syntax Highlighting (manual with spans):**\n- Keywords (import, from, return, const): `text-purple-400`\n- Strings: `text-green-300`\n- Variables: `text-blue-400`\n- Functions: `text-yellow-300`\n- Numbers/params: `text-orange-400`\n\n**Helper function:**\n```typescript\nconst highlightCode = (code: string): JSX.Element => {\n  // Split and wrap keywords/strings in colored spans\n};\n```\n\n**NO external libraries:** Manual highlighting with regex or string manipulation",
         "testStrategy": "Test with sample React and Express code, verify syntax colors render correctly",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": []
@@ -163,7 +163,7 @@
     ],
     "metadata": {
       "created": "2025-11-07T02:12:09.043Z",
-      "updated": "2025-11-07T02:27:06.583Z",
+      "updated": "2025-11-07T02:29:59.194Z",
       "description": "Tasks for master context"
     }
   }
