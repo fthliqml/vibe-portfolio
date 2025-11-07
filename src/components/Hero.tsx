@@ -36,7 +36,7 @@ app.listen(3000);`;
             <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">
               front end
             </p>
-            <CodeCard title="Component.tsx" code={frontEndCode} language="typescript" />
+            <CodeCard title="Component.tsx" code={frontEndCode} language="typescript" animated />
           </div>
 
           {/* Center Column - Main Content */}

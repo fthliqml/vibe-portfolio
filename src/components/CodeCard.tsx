@@ -1,12 +1,30 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 
 type CodeCardProps = {
   title: string;
   code: string;
   language?: 'typescript' | 'javascript';
+  animated?: boolean;
 };
 
-export default function CodeCard({ title, code, language = 'typescript' }: CodeCardProps) {
+export default function CodeCard({ title, code, language = 'typescript', animated = false }: CodeCardProps) {
+  const [displayedCode, setDisplayedCode] = useState(animated ? '' : code);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!animated) return;
+
+    if (currentIndex < code.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedCode(code.slice(0, currentIndex + 1));
+        setCurrentIndex(currentIndex + 1);
+      }, 30); // Speed of typing (30ms per character)
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, code, animated]);
   const highlightCode = (code: string): React.ReactNode => {
     // Keywords to highlight
     const keywords = ['import', 'from', 'export', 'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'class', 'interface', 'type', 'async', 'await', 'new', 'this'];
@@ -105,9 +123,15 @@ export default function CodeCard({ title, code, language = 'typescript' }: CodeC
       
       {/* Code content with blinking cursor */}
       <div className="p-3 sm:p-4 font-mono text-[10px] sm:text-xs leading-tight sm:leading-snug text-gray-300 overflow-x-auto relative">
-        {highlightCode(code)}
-        {/* Blinking cursor */}
-        <span className="inline-block w-2 h-3 sm:h-4 bg-green-400 ml-1 animate-blink"></span>
+        {highlightCode(displayedCode)}
+        {/* Blinking cursor - always visible for animated, only after typing complete */}
+        {(!animated || currentIndex >= code.length) && (
+          <span className="inline-block w-2 h-3 sm:h-4 bg-green-400 ml-1 animate-blink"></span>
+        )}
+        {/* Typing cursor - visible during typing */}
+        {animated && currentIndex < code.length && (
+          <span className="inline-block w-2 h-3 sm:h-4 bg-green-400 ml-1"></span>
+        )}
       </div>
     </div>
   );
