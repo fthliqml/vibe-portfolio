@@ -15,12 +15,25 @@ export default function Contact() {
           Feel free to reach out!
         </p>
 
+        {/* Email Display */}
+        <div className="mt-8">
+          <p className="text-sm uppercase tracking-wider text-gray-500 font-semibold mb-3">
+            Email Me
+          </p>
+          <a
+            href={personalInfo.social.email}
+            className="text-2xl md:text-3xl font-bold text-gray-900 hover:text-gray-600 transition-colors"
+          >
+            {personalInfo.email}
+          </a>
+        </div>
+
         {/* CTA Button */}
         <a
           href={personalInfo.social.email}
           className="inline-flex items-center gap-2 mt-8 px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all duration-300"
         >
-          Get in Touch
+          Send Email
           <span>→</span>
         </a>
       </div>
