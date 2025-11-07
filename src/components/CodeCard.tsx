@@ -25,7 +25,7 @@ export default function CodeCard({ title, code, language = 'typescript', animate
       return () => clearTimeout(timeout);
     }
   }, [currentIndex, code, animated]);
-  const highlightCode = (code: string): React.ReactNode => {
+  const highlightCode = (code: string, showCursor: boolean = false): React.ReactNode => {
     // Keywords to highlight
     const keywords = ['import', 'from', 'export', 'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'class', 'interface', 'type', 'async', 'await', 'new', 'this'];
     
@@ -34,6 +34,7 @@ export default function CodeCard({ title, code, language = 'typescript', animate
     return lines.map((line, lineIndex) => {
       const parts: React.ReactNode[] = [];
       let currentIndex = 0;
+      const isLastLine = lineIndex === lines.length - 1;
       
       // Simple regex-based highlighting
       const tokenRegex = /(["'`][^"'`]*["'`])|(\b(?:import|from|export|const|let|var|function|return|if|else|for|while|class|interface|type|async|await|new|this)\b)|(\b[A-Z][a-zA-Z0-9]*\b)|(\b\d+\b)|([a-zA-Z_][a-zA-Z0-9_]*(?=\())/g;
@@ -104,6 +105,10 @@ export default function CodeCard({ title, code, language = 'typescript', animate
       return (
         <div key={`line-${lineIndex}`} className="whitespace-pre">
           {parts.length > 0 ? parts : <span>{line}</span>}
+          {/* Cursor at end of last line */}
+          {showCursor && isLastLine && (
+            <span className="inline-block w-2 h-3 sm:h-4 bg-gray-400 ml-1 animate-blink"></span>
+          )}
         </div>
       );
     });
@@ -123,15 +128,7 @@ export default function CodeCard({ title, code, language = 'typescript', animate
       
       {/* Code content with blinking cursor */}
       <div className="p-3 sm:p-4 font-mono text-[10px] sm:text-xs leading-tight sm:leading-snug text-gray-300 overflow-x-auto relative">
-        {highlightCode(displayedCode)}
-        {/* Blinking cursor - always visible for animated, only after typing complete */}
-        {(!animated || currentIndex >= code.length) && (
-          <span className="inline-block w-2 h-3 sm:h-4 bg-green-400 ml-1 animate-blink"></span>
-        )}
-        {/* Typing cursor - visible during typing */}
-        {animated && currentIndex < code.length && (
-          <span className="inline-block w-2 h-3 sm:h-4 bg-green-400 ml-1"></span>
-        )}
+        {highlightCode(displayedCode, !animated || currentIndex >= code.length)}
       </div>
     </div>
   );
