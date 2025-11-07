@@ -92,7 +92,7 @@ export default function CodeCard({ title, code, language = 'typescript' }: CodeC
   };
 
   return (
-    <div className="bg-[#282c34] rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1 cursor-pointer">
+    <div className="bg-[#282c34] rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group">
       {/* Header with macOS dots */}
       <div className="bg-gray-700 px-4 py-2.5 flex items-center gap-2">
         <div className="flex items-center gap-1.5">
@@ -103,9 +103,11 @@ export default function CodeCard({ title, code, language = 'typescript' }: CodeC
         <span className="text-xs text-gray-300 font-medium ml-2">{title}</span>
       </div>
       
-      {/* Code content */}
-      <div className="p-3 sm:p-4 font-mono text-[10px] sm:text-xs leading-tight sm:leading-snug text-gray-300 overflow-x-auto">
+      {/* Code content with blinking cursor */}
+      <div className="p-3 sm:p-4 font-mono text-[10px] sm:text-xs leading-tight sm:leading-snug text-gray-300 overflow-x-auto relative">
         {highlightCode(code)}
+        {/* Blinking cursor */}
+        <span className="inline-block w-2 h-3 sm:h-4 bg-green-400 ml-1 animate-blink"></span>
       </div>
     </div>
   );
