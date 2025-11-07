@@ -21,7 +21,7 @@ export default function TechStack() {
   const logosToRender = [...techLogos, ...techLogos];
 
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
         <div className="text-center mb-12">
@@ -37,23 +37,15 @@ export default function TechStack() {
             {logosToRender.map((tech, index) => (
               <div
                 key={`${tech.name}-${index}`}
-                className="shrink-0 mx-6"
-                style={{ width: "160px" }}
+                className="shrink-0 mx-3 sm:mx-4 lg:mx-6 w-24 sm:w-28 lg:w-32"
               >
-                <div className="flex justify-center items-center h-24 p-4">
+                <div className="flex justify-center items-center h-20 sm:h-24 p-2 sm:p-4">
                   <Image
-                    src={tech.src.replace(/([0-9A-F]{6})/i, "888888")}
+                    src={tech.src}
                     alt={`${tech.name} logo`}
-                    width={48}
-                    height={48}
-                    className="h-12 object-contain transition-all duration-300 filter grayscale hover:grayscale-0 transform hover:scale-110"
-                    onMouseOver={(e) => (e.currentTarget.src = tech.src)}
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = tech.src.replace(
-                        /([0-9A-F]{6})/i,
-                        "888888"
-                      ))
-                    }
+                    width={40}
+                    height={40}
+                    className="h-8 sm:h-10 object-contain"
                     unoptimized
                   />
                 </div>
@@ -62,8 +54,8 @@ export default function TechStack() {
           </div>
 
           {/* Fade gradients */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-white to-transparent pointer-events-none"></div>
-          <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-white to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
         </div>
       </div>
     </section>
