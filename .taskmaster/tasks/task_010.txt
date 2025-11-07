@@ -1,47 +1,43 @@
 # Task ID: 10
-# Title: Implement Projects List Page with Filtering
+# Title: Create Contact CTA Section
 # Status: pending
-# Dependencies: 1, 2, 3, 5, 6, 7
+# Dependencies: 3
 # Priority: medium
-# Description: Build Projects page with grid layout, category filtering, and project cards
+# Description: Build contact call-to-action section with heading, description, and email button
 # Details:
-Create app/projects/page.tsx:
+Create `src/components/Contact.tsx`:
 
-**Metadata:**
-```typescript
-export const metadata = {
-  title: "Projects | M. Fatihul Iqmal",
-  description: "Explore my portfolio of full-stack development projects",
-};
+**Section Layout:**
+```
+      Let's Work Together
+      
+   I'm always excited to work on...
+   
+      [ Get in Touch → ]
 ```
 
-**Header:**
-- Title: "Projects"
-- Optional description/subtitle
+**Styling:**
+- Background: `bg-white`
+- Padding: `py-20 md:py-28`
+- Container: `max-w-3xl mx-auto px-4 text-center`
 
-**Filter Section:**
-- Filter buttons: All, Front-End, Back-End, Fullstack
-- State: useState for active filter
-- Buttons styled: rounded-full border hover effects
-- Active button: bg-primary text-white
+**Title:**
+- Text: "Let's Work Together"
+- Style: `text-4xl md:text-5xl font-bold text-gray-900 tracking-tight`
 
-**Projects Grid:**
-- Get filtered projects based on active filter
-- Grid: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6
-- Use ProjectCard component
-- Empty state: "No projects found" if filtered results empty
+**Description:**
+- Text: "I'm always excited to work on new projects and collaborate with talented people. Feel free to reach out!"
+- Style: `text-lg text-gray-600 mt-6 leading-relaxed`
 
-**Interactions:**
-- Filter buttons update active state
-- Projects re-render based on filter
-- Smooth transitions between filter changes (AnimatePresence)
+**Button:**
+- Text: "Get in Touch" with arrow `→`
+- Link: `mailto:{email}` from personal data
+- Style: `inline-flex items-center gap-2 mt-8 px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all duration-300`
 
-**Animations:**
-- FadeUpAnimation wrapper
-- Stagger effect for project cards (layout animation)
-
-**Client Component:**
-- Mark as "use client" for filter state management
+**Import:**
+```typescript
+import { personalInfo } from '@/data/personal';
+```
 
 # Test Strategy:
-All projects display initially, filters work correctly, category filtering accurate, empty state shows when needed, animations smooth, responsive grid
+Test email link opens mail client, verify responsive text sizing, check button hover

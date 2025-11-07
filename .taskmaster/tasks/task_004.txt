@@ -1,30 +1,39 @@
 # Task ID: 4
-# Title: Create Framer Motion Animation Components
+# Title: Build Header Component (Black Navbar)
 # Status: pending
-# Dependencies: None
-# Priority: medium
-# Description: Build reusable animation wrapper components following motion.instruction.md guidelines
+# Dependencies: 1
+# Priority: high
+# Description: Create sticky black navigation header with logo, nav links, and social icons
 # Details:
-Create components in src/components/animations/:
+Create `src/components/Header.tsx`:
 
-**1. FadeUpAnimation.tsx:**
-- "use client" directive
-- fadeUpVariant: hidden (opacity: 0, y: 32), visible (opacity: 1, y: 0, duration: 0.5)
-- Takes children prop (ReactNode type)
+**Layout:**
+- Sticky top navbar: `sticky top-0 z-50`
+- Black background: `bg-black text-white`
+- Container with padding and flex layout
+- Responsive: mobile menu for sm breakpoint
 
-**2. PageTransition.tsx:**
-- "use client" directive
-- Uses AnimatePresence with mode="wait"
-- pageVariants: hidden, visible, exit with proper transitions
-- Wraps page content for smooth transitions
+**Structure:**
+```
+┌─────────────────────────────────────────┐
+│ </>  Nav: About Projects Contact  [🔗] │
+└─────────────────────────────────────────┘
+```
 
-Best practices from motion.instruction.md:
-- Always use "use client" directive
-- Define variants outside component
-- Use TypeScript for props (ReactNode for children)
-- Avoid useEffect for animations
-- Use simple duration-based transitions (no string easing names)
-- Proper AnimatePresence with unique key props
+**Elements:**
+1. **Logo:** LogoIcon + "Fatihul" text
+2. **Desktop Nav:** About, Projects, Contact links (hidden on mobile)
+3. **Social Icons:** LinkedIn, Instagram, Email (group in flex)
+4. **Mobile Menu:** Hamburger icon + slide-down menu
+
+**Styling:**
+- Height: h-16 or h-20
+- Text: text-sm font-medium
+- Hover: text-gray-300 transition
+- Active link: underline decoration-2
+- Icons size: w-5 h-5
+
+**NO Framer Motion:** Use Tailwind transitions only
 
 # Test Strategy:
-Test animations render smoothly, no hydration errors, no TypeScript errors, transitions work without console warnings
+Test sticky behavior, mobile responsiveness, hover states, and link navigation

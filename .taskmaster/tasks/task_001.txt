@@ -1,36 +1,38 @@
 # Task ID: 1
-# Title: Setup Data Structure and TypeScript Types
+# Title: Create Icons Component with All SVG Icons
 # Status: pending
 # Dependencies: None
 # Priority: high
-# Description: Create all data files with TypeScript types for personal info, skills, projects, and social links in src/data/
+# Description: Build Icons.tsx with all required SVG icon components for the portfolio
 # Details:
-Create the following files:
+Create `src/components/Icons.tsx` with all icon components as React FC:
 
-**src/types/index.ts:**
-- SkillLevel type: "Beginner" | "Intermediate" | "Advanced" | "Expert"
-- ProjectCategory type: "Front-End" | "Back-End" | "Fullstack"
-- Skill interface (name, level, icon)
-- Project interface (id, title, category, role, description, longDescription, tech, image, demoUrl, repoUrl, year, featured)
-- SocialLink interface (url, icon, label)
+**Required Icons:**
+1. LogoIcon - Code bracket `</>` for header logo
+2. LinkedInIcon - LinkedIn social icon
+3. InstagramIcon - Instagram social icon  
+4. MailIcon - Email icon
+5. FooterLogoIcon - Letter "N" or brand icon for footer
 
-**src/data/personal.ts:**
-- personalInfo object with: name, title, tagline, bio, email, location, availability
+**Implementation Pattern:**
+```typescript
+type IconProps = {
+  className?: string;
+};
 
-**src/data/skills.ts:**
-- frontendSkills array (React, Next.js, TypeScript, Tailwind, Framer Motion)
-- backendSkills array (Node.js, Express, Prisma, PostgreSQL, REST API)
-- allSkills object combining both
+export const LogoIcon: React.FC<IconProps> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    {/* SVG paths */}
+  </svg>
+);
+```
 
-**src/data/projects.ts:**
-- projects array with 6 projects minimum
-- Helper functions: getFeaturedProjects(), getProjectById(id), getProjectsByCategory(category)
-
-**src/data/socials.ts:**
-- socials object with github, linkedin, twitter, email
-- socialLinks array for easy mapping
-
-Use placeholder data from data.instruction.md
+**Guidelines:**
+- All icons accept className prop for styling
+- Use `fill="currentColor"` for color inheritance
+- Default size: 24x24 viewBox
+- Simple, clean SVG designs
+- Export all icons individually
 
 # Test Strategy:
-Verify all files created, TypeScript compiles without errors, data can be imported in components, helper functions return expected results
+Import icons in test component, verify they render, accept className, and inherit text color

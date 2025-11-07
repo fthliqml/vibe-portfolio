@@ -1,52 +1,53 @@
 # Task ID: 8
-# Title: Implement Home Page with Dual Hero Section
+# Title: Create PortfolioCard Component
 # Status: pending
-# Dependencies: 1, 2, 3, 4, 5, 6, 7
-# Priority: high
-# Description: Build complete home page with unique Hero section (Front-End | Photo | Back-End), Latest Projects, and CTAs
+# Dependencies: 3
+# Priority: medium
+# Description: Build individual project card component for portfolio grid
 # Details:
-Update app/page.tsx:
+Create `src/components/PortfolioCard.tsx`:
 
-**Hero Section (Unique "Dual Expertise" Design):**
-Layout: grid grid-cols-1 md:grid-cols-3 gap-8 items-center
-- **Left Column (Front-End):**
-  - Title: "Front-End Developer"
-  - Description: "Membangun antarmuka yang interaktif dan estetis"
-  - Icons: Code2, Sparkles from lucide-react
-  - Styling: Modern sans-serif (Inter), primary blue accent
-  - Background: subtle blue gradient (from-blue-50)
-  
-- **Center Column (Photo):**
-  - Image: /images/me.png (Next.js Image, 300-400px, rounded-full)
-  - Border lines: border-l border-r border-zinc-200
-  - Priority loading
-  
-- **Right Column (Back-End):**
-  - Title: "Back-End Developer"
-  - Description: "Mengelola logika sistem dan arsitektur data yang efisien"
-  - Semi-transparent code snippets: express(), fetch('/api'), prisma.user.findMany()
-  - Styling: Monospaced font (Roboto Mono), secondary teal accent
-  - Background: subtle teal gradient (from-teal-50)
+**Component Structure:**
+```
+┌─────────────────┐
+│ [Image]         │
+│                 │
+├─────────────────┤
+│ Project Title   │
+│ Category        │
+│ Description     │
+│ [Tech badges]   │
+│ Demo | Repo →   │
+└─────────────────┘
+```
 
-**Latest Projects Section:**
-- Title: "Latest Projects"
-- Get projects: getFeaturedProjects() (3 projects)
-- Grid: grid-cols-1 md:grid-cols-3 gap-6
-- Use ProjectCard component
-- Button: "View All Projects" → Link to /projects
+**Props:**
+```typescript
+type PortfolioCardProps = {
+  project: Project; // from types
+};
+```
 
-**Contact CTA:**
-- Simple centered section
-- Heading: "Let's Work Together"
-- Button: "Get in Touch" → Link to /contact
+**Styling:**
+- Container: `bg-white border border-gray-200 rounded-lg overflow-hidden`
+- Hover: `hover:shadow-xl transition-all duration-300 hover:-translate-y-1`
+- Image: `aspect-video object-cover w-full`
+- Padding: `p-6`
 
-**Animations:**
-- Wrap sections in FadeUpAnimation
-- Stagger delay for project cards
+**Content:**
+1. **Image:** Project thumbnail
+2. **Category:** `text-xs uppercase tracking-wider text-gray-500 font-semibold`
+3. **Title:** `text-xl font-bold text-gray-900 mt-2`
+4. **Description:** `text-sm text-gray-600 mt-2 line-clamp-2`
+5. **Tech Tags:** 
+   - Flex wrap: `flex flex-wrap gap-2 mt-4`
+   - Badge: `bg-gray-100 px-3 py-1 rounded-full text-xs font-medium text-gray-700`
+6. **Links:**
+   - Flex: `flex gap-4 mt-4`
+   - Style: `text-sm font-medium text-gray-900 hover:text-gray-600 flex items-center gap-1`
+   - Arrow icon: `→`
 
-**Responsive:**
-- Stack on mobile (grid-cols-1)
-- 3 columns on desktop (md:grid-cols-3)
+**NO Framer Motion:** Use Tailwind hover and transitions only
 
 # Test Strategy:
-Hero displays dual expertise correctly, profile photo loads with proper alt text, featured projects show, CTAs link correctly, animations work smoothly, responsive on mobile/tablet/desktop
+Test with sample project data, verify hover effects, check responsive image display

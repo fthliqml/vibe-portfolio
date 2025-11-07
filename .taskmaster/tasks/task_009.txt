@@ -1,48 +1,43 @@
 # Task ID: 9
-# Title: Implement About Page
+# Title: Build Portfolio Section
 # Status: pending
-# Dependencies: 1, 2, 3, 5, 6, 7
-# Priority: medium
-# Description: Build About page with bio, skills grid, and optional experience timeline
+# Dependencies: 8, 3
+# Priority: high
+# Description: Create portfolio section with grid of project cards
 # Details:
-Create app/about/page.tsx with metadata export:
+Create `src/components/Portfolio.tsx`:
 
-**Metadata:**
-```typescript
-export const metadata = {
-  title: "About | M. Fatihul Iqmal",
-  description: "Learn about my journey as a full-stack developer",
-};
+**Section Layout:**
+```
+Some of my latest work
+┌────────┬────────┬────────┐
+│ Card 1 │ Card 2 │ Card 3 │
+└────────┴────────┴────────┘
 ```
 
-**Layout:**
-Header: "About Me" with subtitle
-Content: Grid 2 columns on desktop, stack on mobile
-
-**Left Column:**
-- Long bio from personalInfo.bio
-- Additional paragraphs about journey, philosophy
-- text-lg leading-relaxed text-zinc-600
-
-**Right Column:**
-- Mini portrait or illustration (can reuse me.png)
-- Or: highlighted stats/facts about development
-
-**Skills Section:**
-- Two subsections: "Front-End Skills" and "Back-End Skills"
-- Grid: grid-cols-2 md:grid-cols-3 gap-4
-- Use SkillCard component for each skill
-- Skills from frontendSkills and backendSkills data
-
-**Experience Section (Optional):**
-- Timeline or simple list
-- Focus on key achievements
-- Can be placeholder initially
-
 **Styling:**
-- Container: max-w-7xl mx-auto px-6 py-20
-- Section spacing: space-y-16
-- Responsive: stack on mobile
+- Background: `bg-gray-100` (muted gray background)
+- Padding: `py-16 md:py-20`
+- Container: `max-w-7xl mx-auto px-4`
+
+**Title:**
+- Text: "Some of my latest work"
+- Style: `text-sm font-bold uppercase tracking-widest text-gray-500 mb-12`
+
+**Grid:**
+- Grid: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`
+- Map over projects array from data
+- Render PortfolioCard for each project
+
+**Data:**
+```typescript
+import { projects } from '@/data/projects';
+```
+
+**Responsive:**
+- Mobile (sm): 1 column
+- Tablet (md): 2 columns
+- Desktop (lg): 3 columns
 
 # Test Strategy:
-Page renders with correct metadata, bio displays fully, skills grid shows all items, icons load correctly, responsive layout works, animations smooth
+Test grid responsiveness, verify all project cards render, check spacing and alignment

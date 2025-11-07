@@ -1,34 +1,61 @@
 # Task ID: 6
-# Title: Build Header/Navigation Component
+# Title: Build Hero Section Component
 # Status: pending
-# Dependencies: None
+# Dependencies: 3, 5
 # Priority: high
-# Description: Create fixed header with navigation links, active state detection, and mobile hamburger menu
+# Description: Create hero section with 3-column layout: front-end code, center text, back-end code
 # Details:
-Create src/components/Header.tsx:
+Create `src/components/Hero.tsx`:
 
-**Layout:**
-- Fixed position at top (fixed top-0 w-full z-50)
-- Logo/Name on left
-- Nav links on right: Home, Projects, About, Contact
-- Hamburger menu for mobile (<768px)
+**Layout (lg:grid-cols-12):**
+```
+Mobile: Stack vertically
+Desktop: 3 columns
+┌──────────┬──────────┬──────────┐
+│ Col 1-4  │ Col 5-8  │ Col 9-12 │
+│ "front   │ Name     │ "back    │
+│ end"     │ Title    │ end"     │
+│ CodeCard │ Desc     │ CodeCard │
+└──────────┴──────────┴──────────┘
+```
 
-**Styling:**
-- bg-white/80 backdrop-blur-md
-- border-b border-zinc-200
-- Nav links: text-sm font-medium text-zinc-600 hover:text-zinc-900
-- Active state: underline or bg-zinc-100 rounded-full px-3 py-1
+**Left Column (col-span-4):**
+- Text: "front end" - `text-sm font-bold uppercase tracking-widest text-gray-500`
+- CodeCard with React snippet
 
-**Features:**
-- Use next/navigation usePathname() for active state
-- Next.js Link component for navigation
-- Mobile: hamburger icon (lucide-react Menu/X)
-- Mobile menu: slide-in from top or side with AnimatePresence
-- Smooth transitions (transition-colors duration-300)
+**Center Column (col-span-4):**
+- Name: `text-6xl font-extrabold tracking-tight`
+- Title: `text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mt-2`
+- Description: `text-lg text-gray-500 mt-4 leading-relaxed`
+- From personal data
 
-**Responsive:**
-- Desktop: flex-row gap-8
-- Mobile: hamburger + full-screen menu overlay
+**Right Column (col-span-4):**
+- Text: "back end" - same styling as left
+- CodeCard with Express/Node snippet
+
+**Spacing:**
+- Section padding: `py-16 md:py-24`
+- Gap between columns: `gap-8 md:gap-12`
+- Container: `max-w-7xl mx-auto px-4`
+
+**Code Snippets:**
+```typescript
+// Front-end (React)
+import { useState } from 'react';
+
+export const Component = () => {
+  const [active, setActive] = useState(false);
+  return <div>Hello</div>;
+};
+
+// Back-end (Express)
+import express from 'express';
+
+const app = express();
+app.get('/api', (req, res) => {
+  res.json({ status: 'ok' });
+});
+```
 
 # Test Strategy:
-Navigation works on all pages, active state highlights correctly, mobile menu opens/closes smoothly, backdrop blur renders, no layout shift on scroll
+Test responsive grid layout, verify code cards display, check text alignment

@@ -1,39 +1,56 @@
 # Task ID: 5
-# Title: Build Reusable UI Components
+# Title: Create CodeCard Component with Syntax Highlighting
 # Status: pending
-# Dependencies: 1, 4
-# Priority: medium
-# Description: Create component library including ProjectCard, SkillCard, Button variants, and SocialIcon
+# Dependencies: None
+# Priority: high
+# Description: Build reusable CodeCard component for displaying code snippets in hero section
 # Details:
-Create components in src/components/:
+Create `src/components/CodeCard.tsx`:
 
-**1. ProjectCard.tsx:**
-- Props: project (Project type)
-- Next.js Image for thumbnail with fill + object-cover
-- Category badge, title, short description
-- Tech stack tags (map over tech array)
-- Links (Demo & Repo) with lucide-react icons (ExternalLink, Github)
-- Hover: lift with shadow transition
-- Styling: rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow
+**Visual Design:**
+```
+┌────────────────────┐
+│ ● ● ●   Title      │ ← Header (macOS style)
+├────────────────────┤
+│ import { React }   │
+│ from 'react';      │ ← Code content
+│                    │
+│ export const...    │
+└────────────────────┘
+```
 
-**2. SkillCard.tsx:**
-- Props: skill (Skill type)
-- Icon from lucide-react (dynamic icon based on skill.icon)
-- Display skill name and level
-- Clean card design matching ProjectCard style
+**Props:**
+```typescript
+type CodeCardProps = {
+  title: string;
+  code: string; // Raw code string
+  language?: 'typescript' | 'javascript';
+};
+```
 
-**3. Button.tsx:**
-- Variants: primary, secondary
-- Primary: rounded-full bg-primary px-6 py-3 text-white hover:bg-primary/90
-- Secondary: rounded-full border border-zinc-200 px-6 py-3 hover:bg-zinc-50
-- Props: variant, href (optional), onClick (optional), children
+**Styling:**
+- Background: `bg-[#282c34]` (dark code editor)
+- Border radius: `rounded-lg`
+- Shadow: `shadow-xl`
+- Header: `bg-gray-700` with 3 dots (red, yellow, green)
+- Code font: `font-mono text-sm`
+- Line height: `leading-relaxed`
 
-**4. SocialIcon.tsx:**
-- Props: social (SocialLink type)
-- Dynamic icon from lucide-react based on social.icon
-- Link with target="_blank" rel="noopener noreferrer"
-- Hover: scale + color change (hover:scale-110 hover:text-primary)
-- Transition: transition-all duration-300
+**Syntax Highlighting (manual with spans):**
+- Keywords (import, from, return, const): `text-purple-400`
+- Strings: `text-green-300`
+- Variables: `text-blue-400`
+- Functions: `text-yellow-300`
+- Numbers/params: `text-orange-400`
+
+**Helper function:**
+```typescript
+const highlightCode = (code: string): JSX.Element => {
+  // Split and wrap keywords/strings in colored spans
+};
+```
+
+**NO external libraries:** Manual highlighting with regex or string manipulation
 
 # Test Strategy:
-All components render with proper types, hover effects work, Next.js Image optimization works, lucide-react icons display correctly, no TypeScript errors
+Test with sample React and Express code, verify syntax colors render correctly

@@ -1,25 +1,55 @@
 # Task ID: 3
-# Title: Configure Tailwind Custom Colors and Google Fonts
+# Title: Create Data Structure and TypeScript Types
 # Status: pending
 # Dependencies: 1
 # Priority: high
-# Description: Extend Tailwind config with custom colors and configure Inter + Roboto Mono fonts
+# Description: Setup data files with TypeScript types for personal info, projects, and tech stack
 # Details:
-**Update tailwind.config.ts:**
-Extend theme.colors with:
-- primary: '#007ACC'
-- secondary: '#00BFA6'
-- background: '#FFFFFF'
-- text: '#1F1F1F'
-- muted: '#F5F5F5'
+Create data structure in `src/data/`:
 
-**Update app/layout.tsx:**
-Import from next/font/google:
-- Inter (subsets: ["latin"], variable: "--font-inter")
-- Roboto Mono (subsets: ["latin"], variable: "--font-mono")
+**1. src/types/index.ts:**
+```typescript
+export type Project = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  tech: string[];
+  image: string;
+  demoUrl?: string;
+  repoUrl: string;
+};
 
-Apply font variables to HTML element className
-Configure Tailwind to use font variables in theme.fontFamily
+export type TechStack = {
+  name: string;
+  icon: React.FC<{ className?: string }>;
+};
+
+export type PersonalInfo = {
+  name: string;
+  title: string;
+  email: string;
+  description: string;
+  social: {
+    linkedin: string;
+    instagram: string;
+    email: string;
+  };
+};
+```
+
+**2. src/data/personal.ts:**
+- name: "Muhammad Fatihul Iqmal"
+- title: "Full-Stack Developer"
+- description: Bio from hero section
+- social links
+
+**3. src/data/projects.ts:**
+- Array of 3 projects (use placeholder data)
+- All use `/images/project.jpg` initially
+
+**4. src/data/techStack.ts:**
+- Array of tech: React, TypeScript, Node.js, Express, MongoDB, PostgreSQL, Tailwind, Git
 
 # Test Strategy:
-Verify custom colors work (bg-primary, text-secondary), fonts render correctly in browser, monospace font applied to code elements
+Import data files, check TypeScript compiles, verify no errors

@@ -1,28 +1,44 @@
 # Task ID: 7
-# Title: Build Footer Component
+# Title: Build TechStack Section with Marquee Animation
 # Status: pending
-# Dependencies: 1, 5
-# Priority: medium
-# Description: Create simple footer with copyright, social icons, and optional quick links
+# Dependencies: 2, 3
+# Priority: high
+# Description: Create tech stack section with horizontal scrolling marquee of technology logos
 # Details:
-Create src/components/Footer.tsx:
+Create `src/components/TechStack.tsx`:
 
-**Content:**
-- Copyright: © 2025 M. Fatihul Iqmal. All rights reserved.
-- Social icons using SocialIcon component (map over socialLinks from data/socials.ts)
-- Optional quick links: Projects, About, Contact
+**Section Structure:**
+```
+TECHNOLOGIES I WORK WITH
+[← ═══════════════════════ →]
+  React TS Node Express...
+```
 
 **Layout:**
-- Center-aligned on mobile
-- 2-3 columns on desktop (md:grid md:grid-cols-3)
-- Stack on mobile (flex flex-col)
+- Section padding: `py-16 md:py-20`
+- Title: "TECHNOLOGIES I WORK WITH" - `text-sm font-bold uppercase tracking-widest text-gray-500 text-center mb-12`
 
-**Styling:**
-- py-12 px-6 border-t border-zinc-200
-- text-center md:text-left
-- text-sm text-zinc-500
-- Social icons: flex gap-4 justify-center md:justify-start
-- Hover effects on links: hover:text-zinc-900 transition-colors
+**Marquee Container:**
+- Overflow hidden: `overflow-hidden`
+- Relative positioning for fade gradients
+- Left/right fade: `absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10`
+
+**Marquee Content:**
+- Inner div with `animate-marquee` class (from globals.css)
+- Display: `flex gap-12 items-center`
+- **DUPLICATE content** for seamless loop: `[...techStack, ...techStack]`
+
+**Tech Items:**
+- Logo component from data/techStack.ts
+- Size: `w-12 h-12 md:w-16 md:h-16`
+- Grayscale: `grayscale hover:grayscale-0`
+- Transition: `transition-all duration-300`
+- Shrink: `flex-shrink-0`
+
+**Data Source:**
+Import from `data/techStack.ts` with tech names and icon components
+
+**NO JavaScript scroll:** Pure CSS animation only
 
 # Test Strategy:
-Footer displays on all pages, social links open correctly in new tabs, responsive layout works, copyright year is dynamic
+Test smooth infinite scroll, verify grayscale hover effect, check fade gradients work

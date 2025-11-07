@@ -3,10 +3,10 @@
     "tasks": [
       {
         "id": 1,
-        "title": "Setup Data Structure and TypeScript Types",
-        "description": "Create all data files with TypeScript types for personal info, skills, projects, and social links in src/data/",
-        "details": "Create the following files:\n\n**src/types/index.ts:**\n- SkillLevel type: \"Beginner\" | \"Intermediate\" | \"Advanced\" | \"Expert\"\n- ProjectCategory type: \"Front-End\" | \"Back-End\" | \"Fullstack\"\n- Skill interface (name, level, icon)\n- Project interface (id, title, category, role, description, longDescription, tech, image, demoUrl, repoUrl, year, featured)\n- SocialLink interface (url, icon, label)\n\n**src/data/personal.ts:**\n- personalInfo object with: name, title, tagline, bio, email, location, availability\n\n**src/data/skills.ts:**\n- frontendSkills array (React, Next.js, TypeScript, Tailwind, Framer Motion)\n- backendSkills array (Node.js, Express, Prisma, PostgreSQL, REST API)\n- allSkills object combining both\n\n**src/data/projects.ts:**\n- projects array with 6 projects minimum\n- Helper functions: getFeaturedProjects(), getProjectById(id), getProjectsByCategory(category)\n\n**src/data/socials.ts:**\n- socials object with github, linkedin, twitter, email\n- socialLinks array for easy mapping\n\nUse placeholder data from data.instruction.md",
-        "testStrategy": "Verify all files created, TypeScript compiles without errors, data can be imported in components, helper functions return expected results",
+        "title": "Create Icons Component with All SVG Icons",
+        "description": "Build Icons.tsx with all required SVG icon components for the portfolio",
+        "details": "Create `src/components/Icons.tsx` with all icon components as React FC:\n\n**Required Icons:**\n1. LogoIcon - Code bracket `</>` for header logo\n2. LinkedInIcon - LinkedIn social icon\n3. InstagramIcon - Instagram social icon  \n4. MailIcon - Email icon\n5. FooterLogoIcon - Letter \"N\" or brand icon for footer\n\n**Implementation Pattern:**\n```typescript\ntype IconProps = {\n  className?: string;\n};\n\nexport const LogoIcon: React.FC<IconProps> = ({ className }) => (\n  <svg className={className} viewBox=\"0 0 24 24\" fill=\"currentColor\">\n    {/* SVG paths */}\n  </svg>\n);\n```\n\n**Guidelines:**\n- All icons accept className prop for styling\n- Use `fill=\"currentColor\"` for color inheritance\n- Default size: 24x24 viewBox\n- Simple, clean SVG designs\n- Export all icons individually",
+        "testStrategy": "Import icons in test component, verify they render, accept className, and inherit text color",
         "status": "pending",
         "dependencies": [],
         "priority": "high",
@@ -14,10 +14,10 @@
       },
       {
         "id": 2,
-        "title": "Setup Assets Folder and Placeholder Images",
-        "description": "Create public/images folder structure with placeholder images for profile and projects",
-        "details": "Create folder structure:\n- public/images/\n- public/images/me.png (profile photo, 400x400px minimum)\n- public/images/project.jpg (project placeholder, 800x600px minimum)\n- public/images/projects/ (optional for individual project images)\n\nGuidelines:\n- Use placeholder images initially\n- Profile photo should be square (400x400px+)\n- Project thumbnails should be landscape (800x600px+)\n- Consider WebP format for optimization\n- All images will use Next.js Image component with proper alt text",
-        "testStrategy": "Verify folder structure exists, images are accessible via /images/me.png and /images/project.jpg, Next.js can load images without errors",
+        "title": "Setup CSS Keyframes for Marquee Animation",
+        "description": "Add @keyframes marquee animation to globals.css for tech stack scrolling",
+        "details": "Update `src/app/globals.css` to add marquee keyframes:\n\n**Add to bottom of file:**\n```css\n@keyframes marquee {\n  0% {\n    transform: translateX(0);\n  }\n  100% {\n    transform: translateX(-50%);\n  }\n}\n```\n\n**Also add Tailwind layer for custom animation:**\n```css\n@layer utilities {\n  .animate-marquee {\n    animation: marquee 30s linear infinite;\n  }\n}\n```\n\n**Purpose:**\n- Creates horizontal scrolling effect for tech logos\n- Smooth infinite loop animation\n- NO Framer Motion - pure CSS\n\n**Note:** Content will be duplicated in component to create seamless loop",
+        "testStrategy": "Verify animation class exists, check smooth infinite scroll in browser",
         "status": "pending",
         "dependencies": [],
         "priority": "high",
@@ -25,10 +25,10 @@
       },
       {
         "id": 3,
-        "title": "Configure Tailwind Custom Colors and Google Fonts",
-        "description": "Extend Tailwind config with custom colors and configure Inter + Roboto Mono fonts",
-        "details": "**Update tailwind.config.ts:**\nExtend theme.colors with:\n- primary: '#007ACC'\n- secondary: '#00BFA6'\n- background: '#FFFFFF'\n- text: '#1F1F1F'\n- muted: '#F5F5F5'\n\n**Update app/layout.tsx:**\nImport from next/font/google:\n- Inter (subsets: [\"latin\"], variable: \"--font-inter\")\n- Roboto Mono (subsets: [\"latin\"], variable: \"--font-mono\")\n\nApply font variables to HTML element className\nConfigure Tailwind to use font variables in theme.fontFamily",
-        "testStrategy": "Verify custom colors work (bg-primary, text-secondary), fonts render correctly in browser, monospace font applied to code elements",
+        "title": "Create Data Structure and TypeScript Types",
+        "description": "Setup data files with TypeScript types for personal info, projects, and tech stack",
+        "details": "Create data structure in `src/data/`:\n\n**1. src/types/index.ts:**\n```typescript\nexport type Project = {\n  id: string;\n  title: string;\n  category: string;\n  description: string;\n  tech: string[];\n  image: string;\n  demoUrl?: string;\n  repoUrl: string;\n};\n\nexport type TechStack = {\n  name: string;\n  icon: React.FC<{ className?: string }>;\n};\n\nexport type PersonalInfo = {\n  name: string;\n  title: string;\n  email: string;\n  description: string;\n  social: {\n    linkedin: string;\n    instagram: string;\n    email: string;\n  };\n};\n```\n\n**2. src/data/personal.ts:**\n- name: \"Muhammad Fatihul Iqmal\"\n- title: \"Full-Stack Developer\"\n- description: Bio from hero section\n- social links\n\n**3. src/data/projects.ts:**\n- Array of 3 projects (use placeholder data)\n- All use `/images/project.jpg` initially\n\n**4. src/data/techStack.ts:**\n- Array of tech: React, TypeScript, Node.js, Express, MongoDB, PostgreSQL, Tailwind, Git",
+        "testStrategy": "Import data files, check TypeScript compiles, verify no errors",
         "status": "pending",
         "dependencies": [
           1
@@ -38,185 +38,133 @@
       },
       {
         "id": 4,
-        "title": "Create Framer Motion Animation Components",
-        "description": "Build reusable animation wrapper components following motion.instruction.md guidelines",
-        "details": "Create components in src/components/animations/:\n\n**1. FadeUpAnimation.tsx:**\n- \"use client\" directive\n- fadeUpVariant: hidden (opacity: 0, y: 32), visible (opacity: 1, y: 0, duration: 0.5)\n- Takes children prop (ReactNode type)\n\n**2. PageTransition.tsx:**\n- \"use client\" directive\n- Uses AnimatePresence with mode=\"wait\"\n- pageVariants: hidden, visible, exit with proper transitions\n- Wraps page content for smooth transitions\n\nBest practices from motion.instruction.md:\n- Always use \"use client\" directive\n- Define variants outside component\n- Use TypeScript for props (ReactNode for children)\n- Avoid useEffect for animations\n- Use simple duration-based transitions (no string easing names)\n- Proper AnimatePresence with unique key props",
-        "testStrategy": "Test animations render smoothly, no hydration errors, no TypeScript errors, transitions work without console warnings",
+        "title": "Build Header Component (Black Navbar)",
+        "description": "Create sticky black navigation header with logo, nav links, and social icons",
+        "details": "Create `src/components/Header.tsx`:\n\n**Layout:**\n- Sticky top navbar: `sticky top-0 z-50`\n- Black background: `bg-black text-white`\n- Container with padding and flex layout\n- Responsive: mobile menu for sm breakpoint\n\n**Structure:**\n```\n┌─────────────────────────────────────────┐\n│ </>  Nav: About Projects Contact  [🔗] │\n└─────────────────────────────────────────┘\n```\n\n**Elements:**\n1. **Logo:** LogoIcon + \"Fatihul\" text\n2. **Desktop Nav:** About, Projects, Contact links (hidden on mobile)\n3. **Social Icons:** LinkedIn, Instagram, Email (group in flex)\n4. **Mobile Menu:** Hamburger icon + slide-down menu\n\n**Styling:**\n- Height: h-16 or h-20\n- Text: text-sm font-medium\n- Hover: text-gray-300 transition\n- Active link: underline decoration-2\n- Icons size: w-5 h-5\n\n**NO Framer Motion:** Use Tailwind transitions only",
+        "testStrategy": "Test sticky behavior, mobile responsiveness, hover states, and link navigation",
         "status": "pending",
-        "dependencies": [],
-        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "priority": "high",
         "subtasks": []
       },
       {
         "id": 5,
-        "title": "Build Reusable UI Components",
-        "description": "Create component library including ProjectCard, SkillCard, Button variants, and SocialIcon",
-        "details": "Create components in src/components/:\n\n**1. ProjectCard.tsx:**\n- Props: project (Project type)\n- Next.js Image for thumbnail with fill + object-cover\n- Category badge, title, short description\n- Tech stack tags (map over tech array)\n- Links (Demo & Repo) with lucide-react icons (ExternalLink, Github)\n- Hover: lift with shadow transition\n- Styling: rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow\n\n**2. SkillCard.tsx:**\n- Props: skill (Skill type)\n- Icon from lucide-react (dynamic icon based on skill.icon)\n- Display skill name and level\n- Clean card design matching ProjectCard style\n\n**3. Button.tsx:**\n- Variants: primary, secondary\n- Primary: rounded-full bg-primary px-6 py-3 text-white hover:bg-primary/90\n- Secondary: rounded-full border border-zinc-200 px-6 py-3 hover:bg-zinc-50\n- Props: variant, href (optional), onClick (optional), children\n\n**4. SocialIcon.tsx:**\n- Props: social (SocialLink type)\n- Dynamic icon from lucide-react based on social.icon\n- Link with target=\"_blank\" rel=\"noopener noreferrer\"\n- Hover: scale + color change (hover:scale-110 hover:text-primary)\n- Transition: transition-all duration-300",
-        "testStrategy": "All components render with proper types, hover effects work, Next.js Image optimization works, lucide-react icons display correctly, no TypeScript errors",
+        "title": "Create CodeCard Component with Syntax Highlighting",
+        "description": "Build reusable CodeCard component for displaying code snippets in hero section",
+        "details": "Create `src/components/CodeCard.tsx`:\n\n**Visual Design:**\n```\n┌────────────────────┐\n│ ● ● ●   Title      │ ← Header (macOS style)\n├────────────────────┤\n│ import { React }   │\n│ from 'react';      │ ← Code content\n│                    │\n│ export const...    │\n└────────────────────┘\n```\n\n**Props:**\n```typescript\ntype CodeCardProps = {\n  title: string;\n  code: string; // Raw code string\n  language?: 'typescript' | 'javascript';\n};\n```\n\n**Styling:**\n- Background: `bg-[#282c34]` (dark code editor)\n- Border radius: `rounded-lg`\n- Shadow: `shadow-xl`\n- Header: `bg-gray-700` with 3 dots (red, yellow, green)\n- Code font: `font-mono text-sm`\n- Line height: `leading-relaxed`\n\n**Syntax Highlighting (manual with spans):**\n- Keywords (import, from, return, const): `text-purple-400`\n- Strings: `text-green-300`\n- Variables: `text-blue-400`\n- Functions: `text-yellow-300`\n- Numbers/params: `text-orange-400`\n\n**Helper function:**\n```typescript\nconst highlightCode = (code: string): JSX.Element => {\n  // Split and wrap keywords/strings in colored spans\n};\n```\n\n**NO external libraries:** Manual highlighting with regex or string manipulation",
+        "testStrategy": "Test with sample React and Express code, verify syntax colors render correctly",
         "status": "pending",
-        "dependencies": [
-          1,
-          4
-        ],
-        "priority": "medium",
+        "dependencies": [],
+        "priority": "high",
         "subtasks": []
       },
       {
         "id": 6,
-        "title": "Build Header/Navigation Component",
-        "description": "Create fixed header with navigation links, active state detection, and mobile hamburger menu",
-        "details": "Create src/components/Header.tsx:\n\n**Layout:**\n- Fixed position at top (fixed top-0 w-full z-50)\n- Logo/Name on left\n- Nav links on right: Home, Projects, About, Contact\n- Hamburger menu for mobile (<768px)\n\n**Styling:**\n- bg-white/80 backdrop-blur-md\n- border-b border-zinc-200\n- Nav links: text-sm font-medium text-zinc-600 hover:text-zinc-900\n- Active state: underline or bg-zinc-100 rounded-full px-3 py-1\n\n**Features:**\n- Use next/navigation usePathname() for active state\n- Next.js Link component for navigation\n- Mobile: hamburger icon (lucide-react Menu/X)\n- Mobile menu: slide-in from top or side with AnimatePresence\n- Smooth transitions (transition-colors duration-300)\n\n**Responsive:**\n- Desktop: flex-row gap-8\n- Mobile: hamburger + full-screen menu overlay",
-        "testStrategy": "Navigation works on all pages, active state highlights correctly, mobile menu opens/closes smoothly, backdrop blur renders, no layout shift on scroll",
+        "title": "Build Hero Section Component",
+        "description": "Create hero section with 3-column layout: front-end code, center text, back-end code",
+        "details": "Create `src/components/Hero.tsx`:\n\n**Layout (lg:grid-cols-12):**\n```\nMobile: Stack vertically\nDesktop: 3 columns\n┌──────────┬──────────┬──────────┐\n│ Col 1-4  │ Col 5-8  │ Col 9-12 │\n│ \"front   │ Name     │ \"back    │\n│ end\"     │ Title    │ end\"     │\n│ CodeCard │ Desc     │ CodeCard │\n└──────────┴──────────┴──────────┘\n```\n\n**Left Column (col-span-4):**\n- Text: \"front end\" - `text-sm font-bold uppercase tracking-widest text-gray-500`\n- CodeCard with React snippet\n\n**Center Column (col-span-4):**\n- Name: `text-6xl font-extrabold tracking-tight`\n- Title: `text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mt-2`\n- Description: `text-lg text-gray-500 mt-4 leading-relaxed`\n- From personal data\n\n**Right Column (col-span-4):**\n- Text: \"back end\" - same styling as left\n- CodeCard with Express/Node snippet\n\n**Spacing:**\n- Section padding: `py-16 md:py-24`\n- Gap between columns: `gap-8 md:gap-12`\n- Container: `max-w-7xl mx-auto px-4`\n\n**Code Snippets:**\n```typescript\n// Front-end (React)\nimport { useState } from 'react';\n\nexport const Component = () => {\n  const [active, setActive] = useState(false);\n  return <div>Hello</div>;\n};\n\n// Back-end (Express)\nimport express from 'express';\n\nconst app = express();\napp.get('/api', (req, res) => {\n  res.json({ status: 'ok' });\n});\n```",
+        "testStrategy": "Test responsive grid layout, verify code cards display, check text alignment",
         "status": "pending",
-        "dependencies": [],
+        "dependencies": [
+          3,
+          5
+        ],
         "priority": "high",
         "subtasks": []
       },
       {
         "id": 7,
-        "title": "Build Footer Component",
-        "description": "Create simple footer with copyright, social icons, and optional quick links",
-        "details": "Create src/components/Footer.tsx:\n\n**Content:**\n- Copyright: © 2025 M. Fatihul Iqmal. All rights reserved.\n- Social icons using SocialIcon component (map over socialLinks from data/socials.ts)\n- Optional quick links: Projects, About, Contact\n\n**Layout:**\n- Center-aligned on mobile\n- 2-3 columns on desktop (md:grid md:grid-cols-3)\n- Stack on mobile (flex flex-col)\n\n**Styling:**\n- py-12 px-6 border-t border-zinc-200\n- text-center md:text-left\n- text-sm text-zinc-500\n- Social icons: flex gap-4 justify-center md:justify-start\n- Hover effects on links: hover:text-zinc-900 transition-colors",
-        "testStrategy": "Footer displays on all pages, social links open correctly in new tabs, responsive layout works, copyright year is dynamic",
+        "title": "Build TechStack Section with Marquee Animation",
+        "description": "Create tech stack section with horizontal scrolling marquee of technology logos",
+        "details": "Create `src/components/TechStack.tsx`:\n\n**Section Structure:**\n```\nTECHNOLOGIES I WORK WITH\n[← ═══════════════════════ →]\n  React TS Node Express...\n```\n\n**Layout:**\n- Section padding: `py-16 md:py-20`\n- Title: \"TECHNOLOGIES I WORK WITH\" - `text-sm font-bold uppercase tracking-widest text-gray-500 text-center mb-12`\n\n**Marquee Container:**\n- Overflow hidden: `overflow-hidden`\n- Relative positioning for fade gradients\n- Left/right fade: `absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10`\n\n**Marquee Content:**\n- Inner div with `animate-marquee` class (from globals.css)\n- Display: `flex gap-12 items-center`\n- **DUPLICATE content** for seamless loop: `[...techStack, ...techStack]`\n\n**Tech Items:**\n- Logo component from data/techStack.ts\n- Size: `w-12 h-12 md:w-16 md:h-16`\n- Grayscale: `grayscale hover:grayscale-0`\n- Transition: `transition-all duration-300`\n- Shrink: `flex-shrink-0`\n\n**Data Source:**\nImport from `data/techStack.ts` with tech names and icon components\n\n**NO JavaScript scroll:** Pure CSS animation only",
+        "testStrategy": "Test smooth infinite scroll, verify grayscale hover effect, check fade gradients work",
         "status": "pending",
         "dependencies": [
-          1,
-          5
-        ],
-        "priority": "medium",
-        "subtasks": []
-      },
-      {
-        "id": 8,
-        "title": "Implement Home Page with Dual Hero Section",
-        "description": "Build complete home page with unique Hero section (Front-End | Photo | Back-End), Latest Projects, and CTAs",
-        "details": "Update app/page.tsx:\n\n**Hero Section (Unique \"Dual Expertise\" Design):**\nLayout: grid grid-cols-1 md:grid-cols-3 gap-8 items-center\n- **Left Column (Front-End):**\n  - Title: \"Front-End Developer\"\n  - Description: \"Membangun antarmuka yang interaktif dan estetis\"\n  - Icons: Code2, Sparkles from lucide-react\n  - Styling: Modern sans-serif (Inter), primary blue accent\n  - Background: subtle blue gradient (from-blue-50)\n  \n- **Center Column (Photo):**\n  - Image: /images/me.png (Next.js Image, 300-400px, rounded-full)\n  - Border lines: border-l border-r border-zinc-200\n  - Priority loading\n  \n- **Right Column (Back-End):**\n  - Title: \"Back-End Developer\"\n  - Description: \"Mengelola logika sistem dan arsitektur data yang efisien\"\n  - Semi-transparent code snippets: express(), fetch('/api'), prisma.user.findMany()\n  - Styling: Monospaced font (Roboto Mono), secondary teal accent\n  - Background: subtle teal gradient (from-teal-50)\n\n**Latest Projects Section:**\n- Title: \"Latest Projects\"\n- Get projects: getFeaturedProjects() (3 projects)\n- Grid: grid-cols-1 md:grid-cols-3 gap-6\n- Use ProjectCard component\n- Button: \"View All Projects\" → Link to /projects\n\n**Contact CTA:**\n- Simple centered section\n- Heading: \"Let's Work Together\"\n- Button: \"Get in Touch\" → Link to /contact\n\n**Animations:**\n- Wrap sections in FadeUpAnimation\n- Stagger delay for project cards\n\n**Responsive:**\n- Stack on mobile (grid-cols-1)\n- 3 columns on desktop (md:grid-cols-3)",
-        "testStrategy": "Hero displays dual expertise correctly, profile photo loads with proper alt text, featured projects show, CTAs link correctly, animations work smoothly, responsive on mobile/tablet/desktop",
-        "status": "pending",
-        "dependencies": [
-          1,
           2,
-          3,
-          4,
-          5,
-          6,
-          7
+          3
         ],
         "priority": "high",
         "subtasks": []
       },
       {
-        "id": 9,
-        "title": "Implement About Page",
-        "description": "Build About page with bio, skills grid, and optional experience timeline",
-        "details": "Create app/about/page.tsx with metadata export:\n\n**Metadata:**\n```typescript\nexport const metadata = {\n  title: \"About | M. Fatihul Iqmal\",\n  description: \"Learn about my journey as a full-stack developer\",\n};\n```\n\n**Layout:**\nHeader: \"About Me\" with subtitle\nContent: Grid 2 columns on desktop, stack on mobile\n\n**Left Column:**\n- Long bio from personalInfo.bio\n- Additional paragraphs about journey, philosophy\n- text-lg leading-relaxed text-zinc-600\n\n**Right Column:**\n- Mini portrait or illustration (can reuse me.png)\n- Or: highlighted stats/facts about development\n\n**Skills Section:**\n- Two subsections: \"Front-End Skills\" and \"Back-End Skills\"\n- Grid: grid-cols-2 md:grid-cols-3 gap-4\n- Use SkillCard component for each skill\n- Skills from frontendSkills and backendSkills data\n\n**Experience Section (Optional):**\n- Timeline or simple list\n- Focus on key achievements\n- Can be placeholder initially\n\n**Styling:**\n- Container: max-w-7xl mx-auto px-6 py-20\n- Section spacing: space-y-16\n- Responsive: stack on mobile",
-        "testStrategy": "Page renders with correct metadata, bio displays fully, skills grid shows all items, icons load correctly, responsive layout works, animations smooth",
+        "id": 8,
+        "title": "Create PortfolioCard Component",
+        "description": "Build individual project card component for portfolio grid",
+        "details": "Create `src/components/PortfolioCard.tsx`:\n\n**Component Structure:**\n```\n┌─────────────────┐\n│ [Image]         │\n│                 │\n├─────────────────┤\n│ Project Title   │\n│ Category        │\n│ Description     │\n│ [Tech badges]   │\n│ Demo | Repo →   │\n└─────────────────┘\n```\n\n**Props:**\n```typescript\ntype PortfolioCardProps = {\n  project: Project; // from types\n};\n```\n\n**Styling:**\n- Container: `bg-white border border-gray-200 rounded-lg overflow-hidden`\n- Hover: `hover:shadow-xl transition-all duration-300 hover:-translate-y-1`\n- Image: `aspect-video object-cover w-full`\n- Padding: `p-6`\n\n**Content:**\n1. **Image:** Project thumbnail\n2. **Category:** `text-xs uppercase tracking-wider text-gray-500 font-semibold`\n3. **Title:** `text-xl font-bold text-gray-900 mt-2`\n4. **Description:** `text-sm text-gray-600 mt-2 line-clamp-2`\n5. **Tech Tags:** \n   - Flex wrap: `flex flex-wrap gap-2 mt-4`\n   - Badge: `bg-gray-100 px-3 py-1 rounded-full text-xs font-medium text-gray-700`\n6. **Links:**\n   - Flex: `flex gap-4 mt-4`\n   - Style: `text-sm font-medium text-gray-900 hover:text-gray-600 flex items-center gap-1`\n   - Arrow icon: `→`\n\n**NO Framer Motion:** Use Tailwind hover and transitions only",
+        "testStrategy": "Test with sample project data, verify hover effects, check responsive image display",
         "status": "pending",
         "dependencies": [
-          1,
-          2,
-          3,
-          5,
-          6,
-          7
+          3
         ],
         "priority": "medium",
         "subtasks": []
       },
       {
-        "id": 10,
-        "title": "Implement Projects List Page with Filtering",
-        "description": "Build Projects page with grid layout, category filtering, and project cards",
-        "details": "Create app/projects/page.tsx:\n\n**Metadata:**\n```typescript\nexport const metadata = {\n  title: \"Projects | M. Fatihul Iqmal\",\n  description: \"Explore my portfolio of full-stack development projects\",\n};\n```\n\n**Header:**\n- Title: \"Projects\"\n- Optional description/subtitle\n\n**Filter Section:**\n- Filter buttons: All, Front-End, Back-End, Fullstack\n- State: useState for active filter\n- Buttons styled: rounded-full border hover effects\n- Active button: bg-primary text-white\n\n**Projects Grid:**\n- Get filtered projects based on active filter\n- Grid: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6\n- Use ProjectCard component\n- Empty state: \"No projects found\" if filtered results empty\n\n**Interactions:**\n- Filter buttons update active state\n- Projects re-render based on filter\n- Smooth transitions between filter changes (AnimatePresence)\n\n**Animations:**\n- FadeUpAnimation wrapper\n- Stagger effect for project cards (layout animation)\n\n**Client Component:**\n- Mark as \"use client\" for filter state management",
-        "testStrategy": "All projects display initially, filters work correctly, category filtering accurate, empty state shows when needed, animations smooth, responsive grid",
+        "id": 9,
+        "title": "Build Portfolio Section",
+        "description": "Create portfolio section with grid of project cards",
+        "details": "Create `src/components/Portfolio.tsx`:\n\n**Section Layout:**\n```\nSome of my latest work\n┌────────┬────────┬────────┐\n│ Card 1 │ Card 2 │ Card 3 │\n└────────┴────────┴────────┘\n```\n\n**Styling:**\n- Background: `bg-gray-100` (muted gray background)\n- Padding: `py-16 md:py-20`\n- Container: `max-w-7xl mx-auto px-4`\n\n**Title:**\n- Text: \"Some of my latest work\"\n- Style: `text-sm font-bold uppercase tracking-widest text-gray-500 mb-12`\n\n**Grid:**\n- Grid: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`\n- Map over projects array from data\n- Render PortfolioCard for each project\n\n**Data:**\n```typescript\nimport { projects } from '@/data/projects';\n```\n\n**Responsive:**\n- Mobile (sm): 1 column\n- Tablet (md): 2 columns\n- Desktop (lg): 3 columns",
+        "testStrategy": "Test grid responsiveness, verify all project cards render, check spacing and alignment",
         "status": "pending",
         "dependencies": [
-          1,
-          2,
-          3,
-          5,
-          6,
-          7
+          8,
+          3
+        ],
+        "priority": "high",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Create Contact CTA Section",
+        "description": "Build contact call-to-action section with heading, description, and email button",
+        "details": "Create `src/components/Contact.tsx`:\n\n**Section Layout:**\n```\n      Let's Work Together\n      \n   I'm always excited to work on...\n   \n      [ Get in Touch → ]\n```\n\n**Styling:**\n- Background: `bg-white`\n- Padding: `py-20 md:py-28`\n- Container: `max-w-3xl mx-auto px-4 text-center`\n\n**Title:**\n- Text: \"Let's Work Together\"\n- Style: `text-4xl md:text-5xl font-bold text-gray-900 tracking-tight`\n\n**Description:**\n- Text: \"I'm always excited to work on new projects and collaborate with talented people. Feel free to reach out!\"\n- Style: `text-lg text-gray-600 mt-6 leading-relaxed`\n\n**Button:**\n- Text: \"Get in Touch\" with arrow `→`\n- Link: `mailto:{email}` from personal data\n- Style: `inline-flex items-center gap-2 mt-8 px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all duration-300`\n\n**Import:**\n```typescript\nimport { personalInfo } from '@/data/personal';\n```",
+        "testStrategy": "Test email link opens mail client, verify responsive text sizing, check button hover",
+        "status": "pending",
+        "dependencies": [
+          3
         ],
         "priority": "medium",
         "subtasks": []
       },
       {
         "id": 11,
-        "title": "Implement Project Detail Page (Dynamic Route)",
-        "description": "Build dynamic project detail page at /projects/[id] with full project information and navigation",
-        "details": "Create app/projects/[id]/page.tsx:\n\n**Dynamic Metadata:**\n```typescript\nexport async function generateMetadata({ params }: { params: { id: string } }) {\n  const project = getProjectById(params.id);\n  if (!project) return { title: \"Project Not Found\" };\n  return {\n    title: `${project.title} | M. Fatihul Iqmal`,\n    description: project.description,\n  };\n}\n```\n\n**Page Structure:**\n\n1. **Header Section:**\n   - Back button (← Projects) Link to /projects\n   - Title (text-4xl font-bold)\n   - Category badge\n   - Year\n\n2. **Hero Image:**\n   - Large preview: Next.js Image with fill, aspect-video\n   - Alt text from project.title\n\n3. **Overview Grid (2 columns on desktop):**\n   \n   **Left Column:**\n   - Long description (project.longDescription)\n   - Role & responsibilities\n   - Challenges & solutions (can add to Project type or use longDescription)\n   \n   **Right Column (Sidebar):**\n   - Tech stack with icons (map over project.tech)\n   - Links: Demo, Repository with icons (ExternalLink, Github)\n   - Year & duration\n   - Key features list (if available)\n\n4. **Navigation:**\n   - Previous/Next project buttons at bottom\n   - Calculate prev/next from projects array\n   - Disabled state if no prev/next\n\n**404 Handling:**\n- If project not found (getProjectById returns undefined)\n- Show \"Project Not Found\" with link back to /projects\n\n**Styling:**\n- Container: max-w-6xl mx-auto px-6 py-20\n- Section spacing: space-y-12\n- Responsive: stack columns on mobile",
-        "testStrategy": "Dynamic routes work for all project IDs, metadata generates correctly, images load properly, links open in new tabs, prev/next navigation works, 404 shows for invalid IDs, responsive layout",
+        "title": "Build Footer Component",
+        "description": "Create black footer with copyright, social icons, and quick links",
+        "details": "Create `src/components/Footer.tsx`:\n\n**Layout:**\n```\n┌────────────────────────────────────┐\n│  © 2025 Fatihul    [Icons]  Links │\n└────────────────────────────────────┘\n```\n\n**Styling:**\n- Background: `bg-black text-white`\n- Padding: `py-8 md:py-12`\n- Container: `max-w-7xl mx-auto px-4`\n\n**Structure (3 columns on desktop, stack on mobile):**\n\n**Column 1: Copyright**\n- Text: \"© 2025 Muhammad Fatihul Iqmal\"\n- Style: `text-sm text-gray-400`\n\n**Column 2: Social Icons**\n- LinkedIn, Instagram, Email icons\n- Flex gap: `flex gap-4 justify-center`\n- Icon style: `w-5 h-5 text-gray-400 hover:text-white transition-colors`\n- Links to social URLs from personal data\n\n**Column 3: Quick Links**\n- Links: \"About\", \"Projects\", \"Contact\"\n- Flex gap: `flex gap-6 justify-end`\n- Style: `text-sm text-gray-400 hover:text-white transition-colors`\n\n**Responsive:**\n- Mobile: Stack vertically, center all content\n- Desktop: `flex justify-between items-center`\n\n**Import:**\n```typescript\nimport { personalInfo } from '@/data/personal';\nimport { LinkedInIcon, InstagramIcon, MailIcon } from './Icons';\n```",
+        "testStrategy": "Test responsive layout, verify social links work, check hover states on dark background",
         "status": "pending",
         "dependencies": [
           1,
-          2,
-          3,
-          5,
-          6,
-          7
+          3
         ],
         "priority": "medium",
         "subtasks": []
       },
       {
         "id": 12,
-        "title": "Implement Contact Page with Form and Social Links",
-        "description": "Build Contact page with form, social links grid, and additional contact info",
-        "details": "Create app/contact/page.tsx:\n\n**Metadata:**\n```typescript\nexport const metadata = {\n  title: \"Contact | M. Fatihul Iqmal\",\n  description: \"Get in touch for opportunities and collaborations\",\n};\n```\n\n**Layout:**\n- Header: \"Get in Touch\" (text-4xl font-bold)\n- Center-aligned content, max-width 600px\n\n**Contact Form:**\nClient component for form handling\nFields:\n- Name (input, required)\n- Email (input type=\"email\", required)\n- Message (textarea rows=\"6\", required)\n- Submit button (Button component, primary variant)\n\nForm handling:\n- useState for form data\n- onSubmit: e.preventDefault() + console.log for now\n- Can integrate email service later (e.g., Resend, SendGrid)\n\nStyling:\n- Inputs: rounded-lg border border-zinc-200 px-4 py-3 focus:border-primary focus:outline-none\n- Labels: text-sm font-medium text-zinc-700 mb-2\n- Form: space-y-4\n\n**Social Links Section:**\n- Title: \"Or Connect With Me\"\n- Grid: flex gap-4 justify-center\n- Use SocialIcon component for each social link\n- socialLinks from data/socials.ts\n\n**Additional Info:**\n- Email: mailto link (Mail icon + personalInfo.email)\n- Location: personalInfo.location\n- Availability: personalInfo.availability\n- Style: text-sm text-zinc-600\n\n**Animations:**\n- FadeUpAnimation wrapper\n- Form submission: loading state on button",
-        "testStrategy": "Form renders correctly, validation works (required fields), social icons link properly, email mailto works, responsive layout, animations smooth, form can be submitted (console log works)",
-        "status": "pending",
-        "dependencies": [
-          1,
-          3,
-          5,
-          6,
-          7
-        ],
-        "priority": "medium",
-        "subtasks": []
-      },
-      {
-        "id": 13,
-        "title": "Add Page Transitions and Polish Animations",
-        "description": "Implement smooth page transitions using PageTransition component and polish all animations",
-        "details": "**1. Update app/layout.tsx:**\n- Wrap {children} with PageTransition component\n- Ensure proper AnimatePresence setup\n- Pass pathname as key for transitions\n\n**2. Polish existing animations:**\n- Review all FadeUpAnimation usages\n- Add stagger delays where appropriate (especially for lists/grids)\n- Ensure consistent transition durations (0.3s-0.5s)\n\n**3. Add micro-interactions:**\n- Button hover states (scale-105 or opacity changes)\n- Card hover lift animations\n- Icon hover rotations (Github, ExternalLink icons)\n- Smooth color transitions on all interactive elements\n\n**4. Optimize animation performance:**\n- Use transform and opacity for animations (GPU accelerated)\n- Avoid animating width/height directly\n- Add will-change: transform on animated elements if needed\n\n**5. Mobile-specific animations:**\n- Reduce motion on mobile (prefers-reduced-motion media query)\n- Simplify or disable complex animations on small screens\n- Test touch interactions\n\n**6. Scroll animations (optional bonus):**\n- Use Intersection Observer or Framer Motion's useInView\n- Fade in sections as they enter viewport\n- Parallax effect on hero photo (subtle)",
-        "testStrategy": "Page transitions smooth between all routes, no layout shifts, animations don't impact performance (60fps), mobile animations work well, no animation flicker",
+        "title": "Integrate Components in Homepage and Test",
+        "description": "Integrate all sections in page.tsx, test responsiveness, and verify animations",
+        "details": "Update `src/app/page.tsx` to integrate all components:\n\n**Page Structure:**\n```tsx\nimport Header from '@/components/Header';\nimport Hero from '@/components/Hero';\nimport TechStack from '@/components/TechStack';\nimport Portfolio from '@/components/Portfolio';\nimport Contact from '@/components/Contact';\nimport Footer from '@/components/Footer';\n\nexport default function Home() {\n  return (\n    <>\n      <Header />\n      <main>\n        <Hero />\n        <TechStack />\n        <Portfolio />\n        <Contact />\n      </main>\n      <Footer />\n    </>\n  );\n}\n```\n\n**Testing Checklist:**\n1. ✅ Header sticky behavior works\n2. ✅ Hero 3-column layout responsive\n3. ✅ CodeCard syntax highlighting displays\n4. ✅ Marquee animation smooth and infinite\n5. ✅ Portfolio grid responsive (1/2/3 columns)\n6. ✅ All hover effects work (NO Framer Motion)\n7. ✅ Social links functional\n8. ✅ Mobile menu works on small screens\n9. ✅ Contact mailto link opens email client\n10. ✅ No TypeScript errors: `npx tsc --noEmit`\n11. ✅ No console errors in browser\n12. ✅ Black/white/gray color scheme consistent\n\n**Responsive Breakpoints:**\n- sm: 640px\n- md: 768px\n- lg: 1024px\n- xl: 1280px\n\n**Final Polish:**\n- Check spacing between sections\n- Verify all animations use Tailwind only\n- Ensure consistent typography scale\n- Test on Chrome, Firefox, Safari if possible",
+        "testStrategy": "Manual testing on multiple breakpoints, verify no console errors, run TypeScript check, test all interactions",
         "status": "pending",
         "dependencies": [
           4,
-          8,
+          6,
+          7,
           9,
           10,
-          11,
-          12
+          11
         ],
-        "priority": "low",
-        "subtasks": []
-      },
-      {
-        "id": 14,
-        "title": "Test Responsiveness and Optimize Performance",
-        "description": "Comprehensive testing across devices and performance optimization",
-        "details": "**1. Responsive Testing:**\nTest breakpoints:\n- Mobile: 375px, 414px (iPhone sizes)\n- Tablet: 768px, 1024px (iPad sizes)\n- Desktop: 1280px, 1920px\n\nCheck:\n- All pages render correctly on all sizes\n- Navigation menu works on mobile\n- Images scale properly\n- Text remains readable\n- No horizontal scroll\n- Touch targets adequate (min 44x44px)\n\n**2. Performance Optimization:**\n\nImages:\n- Verify Next.js Image optimization working\n- Add width/height or fill prop to all Images\n- Use priority on above-the-fold images\n- Lazy load below-the-fold content\n\nFonts:\n- Verify font-display: swap\n- Check font loading doesn't cause layout shift\n\nCode splitting:\n- Verify dynamic imports where beneficial\n- Check bundle size (npm run build)\n- Analyze with Next.js bundle analyzer if needed\n\n**3. Accessibility:**\n- Add proper alt text to all images\n- Ensure semantic HTML (h1, h2, nav, main, footer)\n- Check keyboard navigation works\n- Test with screen reader (basic check)\n- Color contrast ratios meet WCAG AA\n\n**4. SEO:**\n- Verify all pages have metadata\n- Check Open Graph tags\n- Add sitemap.xml (Next.js can generate)\n- Add robots.txt\n\n**5. Performance Metrics:**\n- Run Lighthouse audit (target 90+ on all)\n- Check Core Web Vitals (LCP, FID, CLS)\n- Test on slow 3G connection\n- Optimize if needed\n\n**6. Cross-browser Testing:**\n- Chrome, Firefox, Safari, Edge\n- Mobile Safari, Chrome Mobile\n- Check for any browser-specific issues",
-        "testStrategy": "All breakpoints tested and work, Lighthouse scores 90+, no accessibility errors, SEO metadata complete, fonts load without FOUT, images optimized, no console errors",
-        "status": "pending",
-        "dependencies": [
-          8,
-          9,
-          10,
-          11,
-          12,
-          13
-        ],
-        "priority": "medium",
+        "priority": "high",
         "subtasks": []
       }
     ],
     "metadata": {
-      "created": "2025-11-06T14:22:39.243Z",
-      "description": "Default tasks context",
-      "updated": "2025-11-06T14:22:39.268Z"
+      "created": "2025-11-07T02:12:09.043Z",
+      "updated": "2025-11-07T02:14:59.366Z",
+      "description": "Tasks for master context"
     }
   }
 }

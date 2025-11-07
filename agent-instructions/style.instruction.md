@@ -1,233 +1,146 @@
-# 🎨 Style & Design Guidelines
+# Panduan Gaya Desain & Komponen (style.md)
 
-## 🎯 Tujuan Desain
-
-Membuat **portofolio pribadi yang minimalis, elegan, dan profesional**, menampilkan sisi ganda sebagai **Front-End Developer** dan **Back-End Developer**.  
-Tampilan harus fokus pada kesederhanaan, tipografi kuat, dan keseimbangan visual antara estetika antarmuka dan logika sistem.
+Dokumen ini adalah sumber kebenaran tunggal untuk semua aspek visual dan fungsional dari aplikasi portofolio. Semua pengembangan di masa depan harus mengacu pada panduan ini untuk menjaga konsistensi dan kualitas.
 
 ---
 
-## 🧭 Konsep Utama
+### **1. Prinsip Umum**
 
-- **Tema:** "Dual Expertise" – Front-End vs Back-End.
-- **Mood:** Calm, modern, confident.
-- **Vibe:** Profesional, teknikal, tapi tetap manusiawi.
-- **Style:** Bersih, dengan kombinasi visual dan elemen kode yang lembut.
-
----
-
-## 🎨 Warna
-
-Gunakan palet yang netral dan profesional:
-
-| Elemen         | Warna                 | Keterangan                                           |
-| -------------- | --------------------- | ---------------------------------------------------- |
-| Background     | #FFFFFF               | Putih bersih untuk kesan minimal                     |
-| Text utama     | #1F1F1F               | Abu tua untuk kontras tinggi                         |
-| Aksen 1        | #007ACC               | Biru lembut (melambangkan teknologi dan kepercayaan) |
-| Aksen 2        | #F5F5F5               | Abu muda untuk background elemen                     |
-| Aksen tambahan | #00BFA6 (teal lembut) | Highlight sisi back-end                              |
-
-**Implementasi Tailwind:**
-
-```typescript
-// tailwind.config.ts - extend colors
-colors: {
-  primary: '#007ACC',
-  secondary: '#00BFA6',
-  background: '#FFFFFF',
-  text: '#1F1F1F',
-  muted: '#F5F5F5',
-}
-```
+- **Teknologi Utama**: React (dengan TypeScript), komponen fungsional, dan Hooks.
+- **Styling**: **Tailwind CSS** secara eksklusif. CSS kustom hanya diizinkan untuk animasi `@keyframes` yang kompleks di `index.html`.
+- **Filosofi Desain**: Bersih, modern, dan minimalis dengan fokus pada kontras tinggi (hitam, putih, abu-abu) dan tipografi yang kuat.
+- **Struktur**: Aplikasi berbasis komponen. Setiap bagian logis dari halaman (`Header`, `Hero`, `Portfolio`) adalah komponennya sendiri di direktori `components/`.
+- **Responsivitas**: Desain _mobile-first_ adalah prioritas. Semua komponen harus terlihat bagus di semua ukuran layar, menggunakan breakpoint standar Tailwind (`sm`, `md`, `lg`, `xl`).
 
 ---
 
-## 🖋️ Tipografi
+### **2. Skema Warna (Color Palette)**
 
-- **Font utama:** Inter atau Poppins — modern dan mudah dibaca
-- **Font sekunder:** Roboto Mono — untuk elemen kode dan bagian back-end
+Palet warna sengaja dibatasi untuk mempertahankan tampilan yang profesional dan fokus.
 
-### Ukuran dan Gaya:
+#### **Warna Latar Belakang**
 
-- **Judul besar:** 48–60px (`text-5xl` atau `text-6xl`), bold (`font-bold`)
-- **Subjudul:** 24–28px (`text-2xl`), medium (`font-medium`)
-- **Paragraf:** 16–18px (`text-base` atau `text-lg`), regular (`font-normal`)
-- **Line-height:** longgar (`leading-relaxed` atau `leading-loose`) untuk kesan lapang
+- **Utama (Terang)**: `bg-white` (`#FFFFFF`) - Digunakan untuk sebagian besar bagian konten seperti Hero, Tech Stack, dan Kontak.
+- **Sekunder (Terang)**: `bg-gray-100` (`#F3F4F6`) - Digunakan untuk memisahkan bagian secara visual, seperti bagian Portfolio.
+- **Utama (Gelap)**: `bg-black` (`#000000`) - Digunakan secara eksklusif untuk `Header` dan `Footer` untuk menciptakan bingkai yang kuat.
 
-### Font Implementation:
+#### **Warna Teks**
 
-```typescript
-// app/layout.tsx
-import { Inter, Roboto_Mono } from "next/font/google";
+- **Teks Primer (di Latar Terang)**: `text-gray-900` atau `text-black`.
+- **Teks Sekunder (di Latar Terang)**: `text-gray-500` atau `text-gray-600` - Untuk subjudul, deskripsi, dan paragraf.
+- **Teks Primer (di Latar Gelap)**: `text-white`.
+- **Teks Sekunder (di Latar Gelap)**: `text-gray-300` atau `text-gray-400` - Untuk tautan navigasi dan teks hak cipta.
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const robotoMono = Roboto_Mono({ subsets: ["latin"], variable: "--font-mono" });
-```
+#### **Warna Aksen & UI**
 
----
+- **Batas (Border)**: `border-gray-200` untuk pemisah halus pada latar belakang terang.
+- **Kontrol Jendela `CodeCard`**:
+  - `bg-red-500`
+  - `bg-yellow-500`
+  - `bg-green-500`
+- **Ikon Peta**: `text-red-500` pada komponen `PortfolioCard` peta.
 
-## 🧑‍💻 Struktur Hero Section
+#### **Warna Sorotan Sintaksis (Syntax Highlighting)**
 
-Posisikan **foto me.png di tengah**, membagi dua sisi:
+Warna-warna ini digunakan secara khusus di dalam komponen `CodeCard`.
 
-| Sisi      | Konten                                                                                                                                                                          | Gaya                                                             |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| **Kiri**  | **Front-End** – fokus pada antarmuka, interaksi, dan pengalaman pengguna. Tambahkan sedikit warna biru dan ikon UI/React/HTML di latar belakang lembut.                         | Tulisan tebal, modern sans-serif (Inter/Poppins)                 |
-| **Kanan** | **Back-End** – fokus pada logika, API, database, dan performa. Tambahkan elemen kode semitransparan seperti potongan express(), fetch('/api'), atau { prisma.user.findMany() }. | Gunakan monospaced font (Roboto Mono) dan tone gelap keabu-abuan |
-
-### Deskripsi Singkat:
-
-- **Front-End:** "Membangun antarmuka yang interaktif dan estetis."
-- **Back-End:** "Mengelola logika sistem dan arsitektur data yang efisien."
-
-### Layout Hero:
-
-- Grid 3 kolom: `grid grid-cols-3 gap-8`
-- Foto tengah: kolom 2, ukuran 300-400px
-- Konten kiri & kanan: vertikal center align
+- **Keywords (`import`, `from`, `return`)**: `text-purple-400`
+- **Strings**: `text-green-300`
+- **Variables (`const`)**: `text-blue-400`
+- **Functions/Components**: `text-yellow-300`
+- **Numbers/Parameters**: `text-orange-400`
 
 ---
 
-## ✨ Animasi & Interaksi
+### **3. Tipografi (Typography)**
 
-### Hover Effects:
+- **Font Utama**: `font-sans` (Sans-Serif standar browser).
+- **Font Kode**: `font-mono` (Monospace standar browser).
 
-- Transisi lembut: `transition-all duration-300 ease-in-out`
-- Scale pada hover: `hover:scale-105`
-- Opacity fade: `hover:opacity-80`
+#### **Gaya Judul**
 
-### Scroll Animations:
+- **Judul Hero Utama (`front end`, `back end`)**:
+  - `text-5xl md:text-6xl font-black tracking-tight text-black`
+- **Nama Utama (`Muhammad Fatihul Iqmal`)**:
+  - `text-6xl font-extrabold text-gray-900 tracking-tight`
+- **Subjudul Utama (`Full-Stack Developer`)**:
+  - `text-4xl font-bold text-gray-900 tracking-tight sm:text-5xl`
+- **Judul Bagian (Pola Kunci!)**:
+  - **Gaya Wajib**: `text-sm font-bold uppercase tracking-widest text-gray-500`
+  - Digunakan untuk "Some of my latest work" dan "Technologies I Work With". Harus direplikasi persis untuk judul bagian baru.
+- **Judul Kontak (`Let's Work Together`)**:
+  - `text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight`
 
-- Fade-up ringan pada section menggunakan Framer Motion
-- Gunakan variant `fadeUpVariant` dari `motion-instruction.md`
+#### **Gaya Teks Tubuh**
 
-### Hero Effects:
-
-- Foto tengah: efek parallax halus atau garis pembatas vertikal
-- Garis pembatas: `border-l` dan `border-r` dengan warna `border-zinc-200`
-
----
-
-## 🧩 Layout
-
-### Container:
-
-- Max-width: `max-w-7xl` (1280px) atau `max-w-6xl` (1152px)
-- Centered: `mx-auto`
-- Padding horizontal: `px-6` atau `px-8`
-
-### Spacing:
-
-- White space cukup lebar: `gap-16` atau `gap-24` untuk section
-- Margin dan padding seimbang: `py-20` untuk section, `mb-12` untuk headings
-
-### Responsiveness:
-
-```typescript
-// Mobile-first approach
-className = "flex flex-col md:flex-row lg:grid lg:grid-cols-3";
-```
+- **Paragraf & Deskripsi Umum**:
+  - `text-lg text-gray-500` atau `text-gray-600`
+- **Teks Kode**:
+  - `text-sm` dengan warna dasar `text-gray-300` di dalam `<pre>`.
 
 ---
 
-## 🔧 Mode Switching (Bonus Feature)
+### **4. Tata Letak & Spasi (Layout & Spacing)**
 
-Tambahkan tombol **"Switch Mode"** untuk berpindah antara:
-
-### 🎨 Front-End Mode:
-
-- Primary color: `#007ACC` (biru lembut)
-- Background: terang (`#FFFFFF`)
-- Highlight: elemen UI/UX
-
-### ⚙️ Back-End Mode:
-
-- Primary color: `#00BFA6` (teal)
-- Background: abu gelap (`#1F1F1F` atau `#0A0A0A`)
-- Highlight: elemen kode/data
-
-### Implementation:
-
-```typescript
-// Gunakan context atau state management
-const [mode, setMode] = useState<'frontend' | 'backend'>('frontend');
-
-// Apply conditional styling
-className={mode === 'frontend' ? 'bg-white text-primary' : 'bg-zinc-900 text-secondary'}
-```
+- **Kontainer Utama**: `container mx-auto px-6` digunakan di setiap bagian tingkat atas untuk memusatkan konten dan memberikan padding horizontal yang konsisten.
+- **Spasi Vertikal Antar Bagian**: Gunakan `py-16`, `py-20`, atau `py-32` untuk memberikan ruang bernapas yang cukup antar bagian.
+- **Grid**: Gunakan `grid` dari Tailwind untuk tata letak yang kompleks.
+  - **Portfolio**: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`
+  - **Hero**: `grid-cols-1 lg:grid-cols-12 gap-12`
+- **Flexbox**: Gunakan untuk alignment di dalam komponen yang lebih kecil (misalnya, `Header`, `Footer`, item di dalam kartu).
 
 ---
 
-## 🎨 Component Styling Guidelines
+### **5. Komponen & Pola UI**
 
-### Cards:
+#### **`Header` & `Footer`**
 
-```typescript
-className =
-  "rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow";
-```
+- **Latar Belakang**: `bg-black` untuk konsistensi.
+- **Posisi Header**: `sticky top-0 z-50` agar selalu terlihat.
+- **Tautan Navigasi**: `text-gray-300` dengan efek `hover:text-white`.
+- **Ikon Sosial**: `text-gray-400` dengan efek `hover:text-white`.
 
-### Buttons:
+#### **`CodeCard`**
 
-```typescript
-// Primary
-className =
-  "rounded-full bg-primary px-6 py-3 text-white font-medium hover:bg-primary/90 transition-colors";
+- **Struktur**: Komponen dengan `title` dan `children` props.
+- **Latar Belakang**: `bg-[#282c34]` untuk tampilan editor kode.
+- **Header Kartu**: `bg-gray-700` dengan tiga titik berwarna untuk estetika jendela macOS.
+- **Konten Kode**: Harus dibungkus dalam tag `<pre><code class="font-mono">...</code></pre>` untuk format yang benar.
+- **Interaksi**: `transform hover:scale-105 transition-transform duration-300`.
 
-// Secondary
-className =
-  "rounded-full border border-zinc-200 px-6 py-3 text-zinc-900 hover:bg-zinc-50 transition-colors";
-```
+#### **`PortfolioCard`**
 
-### Sections:
+- **Tampilan**: `bg-white rounded-lg shadow-md border border-gray-200`.
+- **Struktur**: Terdiri dari dua bagian: area konten utama dan footer kartu (`bg-gray-50`) yang berisi judul dan kategori.
+- **Interaksi**: `transition-all duration-300 hover:shadow-xl hover:-translate-y-1`.
 
-```typescript
-className = "py-20 px-6 max-w-7xl mx-auto";
-```
+#### **Tombol Utama (Call-to-Action)**
 
----
-
-## 📐 Spacing System
-
-Gunakan konsisten spacing scale dari Tailwind:
-
-- **xs:** `gap-2` / `p-2` (8px)
-- **sm:** `gap-4` / `p-4` (16px)
-- **md:** `gap-6` / `p-6` (24px)
-- **lg:** `gap-8` / `p-8` (32px)
-- **xl:** `gap-12` / `p-12` (48px)
-- **2xl:** `gap-16` / `p-16` (64px)
-- **3xl:** `gap-24` / `p-24` (96px)
+- **Contoh**: Tombol "Get in Touch" di bagian Kontak.
+- **Gaya**: `bg-gray-900 text-white font-semibold px-8 py-3 rounded-md`.
+- **Interaksi**: `hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105`.
 
 ---
 
-## 🌈 Gradient Usage (Optional)
+### **6. Ikonografi**
 
-Untuk aksen visual lembut (Tailwind v4 syntax):
-
-```typescript
-// Front-End gradient
-className = "bg-linear-to-r from-blue-50 to-transparent";
-
-// Back-End gradient
-className = "bg-linear-to-r from-teal-50 to-transparent";
-```
+- **Sumber**: Semua ikon adalah komponen SVG React yang didefinisikan secara internal di `components/Icons.tsx`. Ini memastikan pemuatan yang cepat dan styling yang konsisten.
+- **Penggunaan**: Impor ikon yang diperlukan dari `Icons.tsx` dan gunakan sebagai komponen (misalnya, `<TwitterIcon className="..." />`). Jangan gunakan tag `<img>` atau URL eksternal untuk ikon.
+- **Penambahan Ikon Baru**: Ikon baru harus ditambahkan sebagai komponen React baru di dalam `components/Icons.tsx` dengan mengikuti pola `React.FC<IconProps>`.
 
 ---
 
-## 🔤 Text Styling Examples
+### **7. Animasi & Interaktivitas**
 
-```typescript
-// Hero title
-className = "text-5xl md:text-6xl font-bold text-zinc-900 leading-tight";
-
-// Section heading
-className = "text-3xl font-semibold text-zinc-900 mb-4";
-
-// Body text
-className = "text-base text-zinc-600 leading-relaxed";
-
-// Code text (Backend)
-className = "font-mono text-sm text-zinc-700 bg-zinc-100 px-2 py-1 rounded";
-```
+- **Transisi Standar**: Semua efek hover harus menggunakan transisi yang mulus.
+  - **Pola**: `transition-all` atau `transition-colors` dengan `duration-300`.
+- **Efek Hover Umum**:
+  - Perubahan Warna: `hover:text-white`, `hover:bg-gray-800`.
+  - Transformasi: `hover:scale-105` (sedikit membesar), `hover:-translate-y-1` (sedikit terangkat).
+  - Bayangan: `hover:shadow-xl`.
+  - Filter: `hover:grayscale-0` (pada logo Tech Stack).
+- **Animasi Marquee**:
+  - Didefinisikan dengan `@keyframes marquee` di `index.html`.
+  - Diterapkan dengan kelas `animate-marquee`.
+  - Membutuhkan duplikasi konten untuk menciptakan ilusi tak terbatas.
+  - Efek _fade_ di tepi dicapai dengan gradien absolut (`bg-gradient-to-r from-white`).
