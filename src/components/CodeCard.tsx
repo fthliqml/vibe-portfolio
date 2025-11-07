@@ -94,17 +94,17 @@ export default function CodeCard({ title, code, language = 'typescript' }: CodeC
   return (
     <div className="bg-[#282c34] rounded-lg shadow-xl overflow-hidden">
       {/* Header with macOS dots */}
-      <div className="bg-gray-700 px-4 py-3 flex items-center gap-2">
+      <div className="bg-gray-700 px-4 py-2.5 flex items-center gap-2">
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-500"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
         </div>
-        <span className="text-sm text-gray-300 font-medium ml-2">{title}</span>
+        <span className="text-xs text-gray-300 font-medium ml-2">{title}</span>
       </div>
       
       {/* Code content */}
-      <div className="p-6 font-mono text-sm leading-relaxed text-gray-300">
+      <div className="p-3 sm:p-4 font-mono text-[10px] sm:text-xs leading-tight sm:leading-snug text-gray-300 overflow-x-auto">
         {highlightCode(code)}
       </div>
     </div>
