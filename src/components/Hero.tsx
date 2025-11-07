@@ -30,16 +30,16 @@ app.listen(3000);`;
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Main background grid pattern - larger and more visible */}
-      <div 
-        className="absolute inset-0 opacity-40" 
+      <div
+        className="absolute inset-0 opacity-40"
         style={{
           backgroundImage: `
             radial-gradient(circle at 3px 3px, rgb(160 160 160) 2.5px, transparent 0),
             linear-gradient(rgba(160, 160, 160, 0.15) 1px, transparent 1px),
             linear-gradient(90deg, rgba(160, 160, 160, 0.15) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px, 40px 40px, 40px 40px',
-          backgroundPosition: '0 0, 0 0, 0 0'
+          backgroundSize: "80px 80px, 40px 40px, 40px 40px",
+          backgroundPosition: "0 0, 0 0, 0 0",
         }}
       ></div>
 
@@ -58,7 +58,7 @@ app.listen(3000);`;
         <div className="absolute top-56 right-8 w-24 h-16 border-2 border-gray-400"></div>
         <div className="absolute top-4 right-36 w-12 h-12 border-2 border-gray-500"></div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
           {/* Left Column - Front End */}
@@ -76,9 +76,6 @@ app.listen(3000);`;
 
           {/* Center Column - Main Content */}
           <div className="lg:col-span-4 order-1 lg:order-2 text-center">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
-              {personalInfo.name}
-            </h1>
             <p className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mt-2">
               {personalInfo.title}
             </p>
