@@ -2,8 +2,6 @@ import { LinkedInIcon, InstagramIcon, MailIcon } from './Icons';
 import { personalInfo } from '@/data/personal';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-  
   const quickLinks = [
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
@@ -16,7 +14,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Copyright */}
           <div className="text-sm text-gray-400 text-center md:text-left">
-            © {currentYear} {personalInfo.name}
+            © 2025 {personalInfo.name}
           </div>
 
           {/* Social Icons */}
