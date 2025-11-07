@@ -7,14 +7,14 @@ type PortfolioCardProps = {
 
 export default function PortfolioCard({ project }: PortfolioCardProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 cursor-pointer group">
       {/* Project Image */}
-      <div className="relative aspect-video w-full bg-gray-100">
+      <div className="relative aspect-video w-full bg-gray-100 overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
         />
       </div>
 

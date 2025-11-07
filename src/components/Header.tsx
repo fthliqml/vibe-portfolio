@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { LogoIcon, LinkedInIcon, InstagramIcon, MailIcon } from './Icons';
 import { personalInfo } from '@/data/personal';
@@ -18,10 +19,19 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-black text-white">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <LogoIcon className="w-6 h-6" />
-            <span className="text-lg font-semibold">Fatihul</span>
+          {/* Logo with Avatar */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-gray-700 transition-all duration-300 group-hover:ring-white group-hover:scale-110">
+              <Image
+                src="/images/me.png"
+                alt={personalInfo.name}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+            <span className="text-lg font-semibold transition-colors duration-300 group-hover:text-gray-300">
+              {personalInfo.name}
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
