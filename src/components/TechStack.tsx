@@ -1,16 +1,19 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 const techLogos = [
-  { name: 'React', src: 'https://cdn.simpleicons.org/react/61DAFB' },
-  { name: 'TypeScript', src: 'https://cdn.simpleicons.org/typescript/3178C6' },
-  { name: 'Node.js', src: 'https://cdn.simpleicons.org/nodedotjs/339933' },
-  { name: 'Express', src: 'https://cdn.simpleicons.org/express/000000' },
-  { name: 'MongoDB', src: 'https://cdn.simpleicons.org/mongodb/47A248' },
-  { name: 'PostgreSQL', src: 'https://cdn.simpleicons.org/postgresql/4169E1' },
-  { name: 'Tailwind CSS', src: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
-  { name: 'Git', src: 'https://cdn.simpleicons.org/git/F05032' },
+  { name: "React", src: "https://cdn.simpleicons.org/react/61DAFB" },
+  { name: "TypeScript", src: "https://cdn.simpleicons.org/typescript/3178C6" },
+  { name: "Node.js", src: "https://cdn.simpleicons.org/nodedotjs/339933" },
+  { name: "Express", src: "https://cdn.simpleicons.org/express/000000" },
+  { name: "MongoDB", src: "https://cdn.simpleicons.org/mongodb/47A248" },
+  { name: "PostgreSQL", src: "https://cdn.simpleicons.org/postgresql/4169E1" },
+  {
+    name: "Tailwind CSS",
+    src: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
+  },
+  { name: "Git", src: "https://cdn.simpleicons.org/git/F05032" },
 ];
 
 export default function TechStack() {
@@ -34,20 +37,24 @@ export default function TechStack() {
             {logosToRender.map((tech, index) => (
               <div
                 key={`${tech.name}-${index}`}
-                className="flex-shrink-0 mx-6"
-                style={{ width: '160px' }}
+                className="shrink-0 mx-6"
+                style={{ width: "160px" }}
               >
                 <div className="flex justify-center items-center h-24 p-4">
                   <Image
-                    src={tech.src.replace(/([0-9A-F]{6})/i, '888888')}
+                    src={tech.src.replace(/([0-9A-F]{6})/i, "888888")}
                     alt={`${tech.name} logo`}
                     width={48}
                     height={48}
                     className="h-12 object-contain transition-all duration-300 filter grayscale hover:grayscale-0 transform hover:scale-110"
                     onMouseOver={(e) => (e.currentTarget.src = tech.src)}
                     onMouseOut={(e) =>
-                      (e.currentTarget.src = tech.src.replace(/([0-9A-F]{6})/i, '888888'))
+                      (e.currentTarget.src = tech.src.replace(
+                        /([0-9A-F]{6})/i,
+                        "888888"
+                      ))
                     }
+                    unoptimized
                   />
                 </div>
               </div>
@@ -55,8 +62,8 @@ export default function TechStack() {
           </div>
 
           {/* Fade gradients */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-white to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-white to-transparent pointer-events-none"></div>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { Project } from '@/types';
+import Image from "next/image";
+import { Project } from "@/types";
 
 type PortfolioCardProps = {
   project: Project;
@@ -16,6 +16,7 @@ export default function PortfolioCard({ project }: PortfolioCardProps) {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-300 group-hover:scale-110"
+          priority
         />
       </div>
 
