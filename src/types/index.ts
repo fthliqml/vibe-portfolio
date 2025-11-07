@@ -1,30 +1,22 @@
-export type SkillLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert";
-
-export type ProjectCategory = "Front-End" | "Back-End" | "Fullstack";
-
-export interface Skill {
-  name: string;
-  level: SkillLevel;
-  icon: string;
-}
-
-export interface Project {
+export type Project = {
   id: string;
   title: string;
-  category: ProjectCategory;
-  role: string;
+  category: string;
   description: string;
-  longDescription: string;
   tech: string[];
   image: string;
-  demoUrl?: string | null;
+  demoUrl?: string;
   repoUrl: string;
-  year: number;
-  featured?: boolean;
-}
+};
 
-export interface SocialLink {
-  url: string;
-  icon: string;
-  label: string;
-}
+export type PersonalInfo = {
+  name: string;
+  title: string;
+  email: string;
+  description: string;
+  social: {
+    linkedin: string;
+    instagram: string;
+    email: string;
+  };
+};

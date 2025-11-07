@@ -29,7 +29,7 @@
         "description": "Setup data files with TypeScript types for personal info, projects, and tech stack",
         "details": "Create data structure in `src/data/`:\n\n**1. src/types/index.ts:**\n```typescript\nexport type Project = {\n  id: string;\n  title: string;\n  category: string;\n  description: string;\n  tech: string[];\n  image: string;\n  demoUrl?: string;\n  repoUrl: string;\n};\n\nexport type TechStack = {\n  name: string;\n  icon: React.FC<{ className?: string }>;\n};\n\nexport type PersonalInfo = {\n  name: string;\n  title: string;\n  email: string;\n  description: string;\n  social: {\n    linkedin: string;\n    instagram: string;\n    email: string;\n  };\n};\n```\n\n**2. src/data/personal.ts:**\n- name: \"Muhammad Fatihul Iqmal\"\n- title: \"Full-Stack Developer\"\n- description: Bio from hero section\n- social links\n\n**3. src/data/projects.ts:**\n- Array of 3 projects (use placeholder data)\n- All use `/images/project.jpg` initially\n\n**4. src/data/techStack.ts:**\n- Array of tech: React, TypeScript, Node.js, Express, MongoDB, PostgreSQL, Tailwind, Git",
         "testStrategy": "Import data files, check TypeScript compiles, verify no errors",
-        "status": "in-progress",
+        "status": "done",
         "dependencies": [
           1
         ],
@@ -163,7 +163,7 @@
     ],
     "metadata": {
       "created": "2025-11-07T02:12:09.043Z",
-      "updated": "2025-11-07T02:19:34.773Z",
+      "updated": "2025-11-07T02:26:00.293Z",
       "description": "Tasks for master context"
     }
   }
