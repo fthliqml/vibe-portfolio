@@ -1,11 +1,21 @@
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import TechStack from '@/components/TechStack';
+import Portfolio from '@/components/Portfolio';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
-      <div className="flex items-center justify-center h-screen">
-        <h1 className="text-4xl font-bold text-gray-900">
-          Portfolio Homepage - Under Construction
-        </h1>
-      </div>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <TechStack />
+        <Portfolio />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
