@@ -94,7 +94,7 @@
         "description": "Build individual project card component for portfolio grid",
         "details": "Create `src/components/PortfolioCard.tsx`:\n\n**Component Structure:**\n```\n┌─────────────────┐\n│ [Image]         │\n│                 │\n├─────────────────┤\n│ Project Title   │\n│ Category        │\n│ Description     │\n│ [Tech badges]   │\n│ Demo | Repo →   │\n└─────────────────┘\n```\n\n**Props:**\n```typescript\ntype PortfolioCardProps = {\n  project: Project; // from types\n};\n```\n\n**Styling:**\n- Container: `bg-white border border-gray-200 rounded-lg overflow-hidden`\n- Hover: `hover:shadow-xl transition-all duration-300 hover:-translate-y-1`\n- Image: `aspect-video object-cover w-full`\n- Padding: `p-6`\n\n**Content:**\n1. **Image:** Project thumbnail\n2. **Category:** `text-xs uppercase tracking-wider text-gray-500 font-semibold`\n3. **Title:** `text-xl font-bold text-gray-900 mt-2`\n4. **Description:** `text-sm text-gray-600 mt-2 line-clamp-2`\n5. **Tech Tags:** \n   - Flex wrap: `flex flex-wrap gap-2 mt-4`\n   - Badge: `bg-gray-100 px-3 py-1 rounded-full text-xs font-medium text-gray-700`\n6. **Links:**\n   - Flex: `flex gap-4 mt-4`\n   - Style: `text-sm font-medium text-gray-900 hover:text-gray-600 flex items-center gap-1`\n   - Arrow icon: `→`\n\n**NO Framer Motion:** Use Tailwind hover and transitions only",
         "testStrategy": "Test with sample project data, verify hover effects, check responsive image display",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           3
         ],
@@ -163,7 +163,7 @@
     ],
     "metadata": {
       "created": "2025-11-07T02:12:09.043Z",
-      "updated": "2025-11-07T02:31:37.946Z",
+      "updated": "2025-11-07T02:32:19.298Z",
       "description": "Tasks for master context"
     }
   }
