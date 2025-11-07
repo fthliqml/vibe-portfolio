@@ -92,7 +92,7 @@ export default function CodeCard({ title, code, language = 'typescript' }: CodeC
   };
 
   return (
-    <div className="bg-[#282c34] rounded-lg shadow-xl overflow-hidden">
+    <div className="bg-[#282c34] rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1 cursor-pointer">
       {/* Header with macOS dots */}
       <div className="bg-gray-700 px-4 py-2.5 flex items-center gap-2">
         <div className="flex items-center gap-1.5">
