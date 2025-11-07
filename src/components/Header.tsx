@@ -26,6 +26,7 @@ export default function Header() {
                 src="/images/me-bg.jpg"
                 alt={personalInfo.name}
                 fill
+                sizes="40px"
                 className="object-cover transition-transform duration-300 group-hover:scale-110"
               />
             </div>
