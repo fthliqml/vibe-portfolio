@@ -2,10 +2,11 @@
 
 > My first **Vibe Coding** project - A minimalist, high-performance portfolio showcasing full-stack development skills
 
-![Portfolio Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
+![Portfolio Preview](https://img.shields.io/badge/Status-Live%20on%20Vercel-brightgreen)
+![Live URL](https://img.shields.io/badge/Live-https%3A%2F%2Ffthliqml.vercel.app%2F-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-cyan)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-cyan)
 ![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)
 
 ---
@@ -17,6 +18,7 @@ This is my **first Vibe Coding project** - a complete redesign and development o
 ### 🎯 Project Vision
 
 Create a portfolio that:
+
 - **Reflects my coding aesthetic** - Black/white/gray minimalist design
 - **Showcases real development skills** - Custom animations, responsive design
 - **Performs flawlessly** - Fast loading, optimized for all devices
@@ -27,24 +29,28 @@ Create a portfolio that:
 ## 🛠️ Tech Stack
 
 ### **Frontend**
+
 - **Next.js 15** - React framework with App Router
 - **TypeScript 5** - Type safety and developer experience
 - **Tailwind CSS 4** - Utility-first styling framework
 - **React Hooks** - State management and effects
 
 ### **Design & Animation**
+
 - **Pure CSS Animations** - No heavy libraries
 - **Custom Syntax Highlighting** - Manual regex-based
 - **Marquee Effects** - CSS keyframe animations
 - **Responsive Grid** - Mobile-first approach
 
 ### **Development**
+
 - **GitHub Actions** - CI/CD pipeline
 - **ESLint** - Code quality enforcement
 - **TypeScript Compiler** - Type checking
 - **Next.js Build** - Production optimization
 
 ### **Deployment**
+
 - **Vercel** - Automatic deployments
 - **Global CDN** - Fast worldwide access
 - **Production Branch** - Protected deployments
@@ -85,18 +91,21 @@ my-portfolio/
 ## ✨ Key Features
 
 ### **Visual Design**
+
 - 🎨 **Minimalist Aesthetic** - Clean black/white/gray palette
 - 💻 **Code-Focused Layout** - Syntax highlighting and terminal vibes
 - 🔄 **Smooth Animations** - Custom CSS keyframes (no heavy libraries)
 - 📱 **Fully Responsive** - Mobile, tablet, desktop optimized
 
 ### **Interactive Elements**
+
 - ⌨️ **Typing Animations** - Character-by-character code reveals
 - 📍 **Blinking Cursor** - Realistic terminal experience
 - 🎯 **Hover Effects** - Subtle scale and shadow transitions
 - 🔄 **Marquee Tech Stack** - Endless scrolling technology showcase
 
 ### **Technical Excellence**
+
 - ⚡ **Zero Heavy Libraries** - Pure CSS animations
 - 🏗️ **Component Architecture** - Reusable, maintainable code
 - 🛡️ **Type Safety** - Full TypeScript coverage
@@ -107,9 +116,11 @@ my-portfolio/
 ## 📖 Documentation
 
 ### **📊 Complete Development Journey**
+
 For the full story of how this project came to life, check out:
 
 **[📋 PROJECT_TIMELINE.md](PROJECT_TIMELINE.md)** - 31+ minutes of development documented
+
 - ✅ 12 initial tasks completed
 - 🔧 4 major revisions implemented
 - ⏱️ Detailed time tracking
@@ -117,7 +128,9 @@ For the full story of how this project came to life, check out:
 - 🚀 Deployment setup
 
 ### **🚀 Deployment Guide**
+
 **[📋 DEPLOYMENT.md](DEPLOYMENT.md)** - Production deployment instructions
+
 - 🔗 Vercel setup walkthrough
 - 🌐 CI/CD pipeline configuration
 - 📊 Performance monitoring
@@ -128,6 +141,7 @@ For the full story of how this project came to life, check out:
 ## 🚀 Quick Start
 
 ### **Local Development**
+
 ```bash
 # Clone the repository
 git clone https://github.com/fthliqml/vibe-portfolio.git
@@ -143,6 +157,7 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### **Available Scripts**
+
 ```bash
 npm run dev      # Start development server
 npm run build    # Build for production
@@ -156,6 +171,7 @@ npm run typecheck # Run TypeScript check
 ## 🎯 Development Philosophy
 
 ### **"Vibe Coding" Approach**
+
 This project embodies my **"Vibe Coding"** philosophy:
 
 1. **Clean Aesthetics** - Every pixel has purpose
@@ -165,6 +181,7 @@ This project embodies my **"Vibe Coding"** philosophy:
 5. **Continuous Learning** - Documented problem-solving process
 
 ### **Technical Decisions**
+
 - **Why No Framer Motion?** - Custom CSS for better performance
 - **Why Simple Icons?** - Lightweight, reliable CDN
 - **Why TypeScript?** - Catch errors before they happen
@@ -176,24 +193,28 @@ This project embodies my **"Vibe Coding"** philosophy:
 ## 🌟 What Makes This Special
 
 ### **🎨 Design Excellence**
+
 - Custom grid system with background patterns
 - Thoughtful typography and spacing
 - Subtle animations that enhance UX
 - Professional color palette
 
 ### **💻 Code Quality**
+
 - Zero unused variables
 - Consistent coding patterns
 - Proper error handling
 - Type-safe implementations
 
 ### **🚀 Performance Optimized**
+
 - Next.js Image optimization
 - Static site generation
 - CSS-in-JS optimization
 - Minimal JavaScript bundle
 
 ### **📱 User Experience**
+
 - Intuitive navigation
 - Smooth transitions
 - Mobile-first design
@@ -224,16 +245,24 @@ This project embodies my **"Vibe Coding"** philosophy:
 
 ## 🚀 Live Demo
 
-**🔗 [View Live Portfolio](https://your-portfolio-url.vercel.app)**
+**🔗 [🌟 View Live Portfolio](https://fthliqml.vercel.app/)**
 
-### **Preview Links**
-- **Master Branch:** [Development Preview](https://vercel.com/github-commit-previews) *(auto-generated)*
-- **Production Branch:** [Live Production](https://your-portfolio-url.vercel.app)
+### **Live Deployment**
+
+- **Production URL:** [https://fthliqml.vercel.app](https://fthliqml.vercel.app/) _(auto-deploy from production branch)_
+- **Status:** ✅ Live and running
+- **Last Updated:** Every push to production branch
+- **Performance:** Optimized by Vercel Edge Network
+
+### **Development Previews**
+
+- **Master Branch:** [Auto-generated previews](https://vercel.com/github-commit-previews) _(Vercel Git integration)_
 
 ---
 
 ## 🤝 Connect With Me
 
+- **🌐 Live Portfolio:** [fthliqml.vercel.app](https://fthliqml.vercel.app/)
 - **💼 LinkedIn:** [mfi-iqmal](https://linkedin.com/in/mfi-iqmal)
 - **📸 Instagram:** [fthliqmal](https://instagram.com/fthliqmal)
 - **📧 Email:** [fatihuliqmalzzz@gmail.com](https://mail.google.com/mail/?view=cm&to=fatihuliqmalzzz@gmail.com)
@@ -248,5 +277,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **🎉 This portfolio represents my journey as a full-stack developer - clean code, beautiful design, and endless learning!**
 
-*Built with ❤️ using Next.js, TypeScript, and Tailwind CSS*
+**🌐 Currently Live at:** [https://fthliqml.vercel.app](https://fthliqml.vercel.app/)
 
+_Built with ❤️ using Next.js, TypeScript, and Tailwind CSS | Deployed on Vercel_
