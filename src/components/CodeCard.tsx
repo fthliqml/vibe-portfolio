@@ -9,7 +9,7 @@ type CodeCardProps = {
   animated?: boolean;
 };
 
-export default function CodeCard({ title, code, language = 'typescript', animated = false }: CodeCardProps) {
+export default function CodeCard({ title, code, animated = false }: CodeCardProps) {
   const [displayedCode, setDisplayedCode] = useState(animated ? '' : code);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -26,21 +26,17 @@ export default function CodeCard({ title, code, language = 'typescript', animate
     }
   }, [currentIndex, code, animated]);
   const highlightCode = (code: string, showCursor: boolean = false): React.ReactNode => {
-    // Keywords to highlight
-    const keywords = ['import', 'from', 'export', 'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'class', 'interface', 'type', 'async', 'await', 'new', 'this'];
-    
     const lines = code.split('\n');
     
     return lines.map((line, lineIndex) => {
       const parts: React.ReactNode[] = [];
-      let currentIndex = 0;
+      let lastIndex = 0;
       const isLastLine = lineIndex === lines.length - 1;
       
       // Simple regex-based highlighting
       const tokenRegex = /(["'`][^"'`]*["'`])|(\b(?:import|from|export|const|let|var|function|return|if|else|for|while|class|interface|type|async|await|new|this)\b)|(\b[A-Z][a-zA-Z0-9]*\b)|(\b\d+\b)|([a-zA-Z_][a-zA-Z0-9_]*(?=\())/g;
       
       let match;
-      let lastIndex = 0;
       
       while ((match = tokenRegex.exec(line)) !== null) {
         // Add text before match

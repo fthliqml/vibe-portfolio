@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 const techLogos = [
   { name: 'React', src: 'https://cdn.simpleicons.org/react/61DAFB' },
   { name: 'TypeScript', src: 'https://cdn.simpleicons.org/typescript/3178C6' },
@@ -36,9 +38,11 @@ export default function TechStack() {
                 style={{ width: '160px' }}
               >
                 <div className="flex justify-center items-center h-24 p-4">
-                  <img
+                  <Image
                     src={tech.src.replace(/([0-9A-F]{6})/i, '888888')}
                     alt={`${tech.name} logo`}
+                    width={48}
+                    height={48}
                     className="h-12 object-contain transition-all duration-300 filter grayscale hover:grayscale-0 transform hover:scale-110"
                     onMouseOver={(e) => (e.currentTarget.src = tech.src)}
                     onMouseOut={(e) =>

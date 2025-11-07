@@ -6,12 +6,12 @@ export default function Contact() {
       <div className="max-w-3xl mx-auto px-4 text-center">
         {/* Title */}
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
-          Let's Work Together
+          Let&apos;s Work Together
         </h2>
 
         {/* Description */}
         <p className="text-lg text-gray-600 mt-6 leading-relaxed">
-          I'm always excited to work on new projects and collaborate with talented people. 
+          I&apos;m always excited to work on new projects and collaborate with talented people. 
           Feel free to reach out!
         </p>
 
