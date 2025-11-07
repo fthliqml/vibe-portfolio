@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
-import { LinkedInIcon, InstagramIcon, MailIcon } from './Icons';
-import { personalInfo } from '@/data/personal';
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { LinkedInIcon, InstagramIcon, MailIcon } from "./Icons";
+import { personalInfo } from "@/data/personal";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -23,7 +23,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-gray-700 transition-all duration-300 group-hover:ring-white group-hover:scale-110">
               <Image
-                src="/images/me.png"
+                src="/images/me-bg.jpg"
                 alt={personalInfo.name}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-110"
