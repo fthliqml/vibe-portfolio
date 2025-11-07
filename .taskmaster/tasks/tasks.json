@@ -7,7 +7,7 @@
         "description": "Build Icons.tsx with all required SVG icon components for the portfolio",
         "details": "Create `src/components/Icons.tsx` with all icon components as React FC:\n\n**Required Icons:**\n1. LogoIcon - Code bracket `</>` for header logo\n2. LinkedInIcon - LinkedIn social icon\n3. InstagramIcon - Instagram social icon  \n4. MailIcon - Email icon\n5. FooterLogoIcon - Letter \"N\" or brand icon for footer\n\n**Implementation Pattern:**\n```typescript\ntype IconProps = {\n  className?: string;\n};\n\nexport const LogoIcon: React.FC<IconProps> = ({ className }) => (\n  <svg className={className} viewBox=\"0 0 24 24\" fill=\"currentColor\">\n    {/* SVG paths */}\n  </svg>\n);\n```\n\n**Guidelines:**\n- All icons accept className prop for styling\n- Use `fill=\"currentColor\"` for color inheritance\n- Default size: 24x24 viewBox\n- Simple, clean SVG designs\n- Export all icons individually",
         "testStrategy": "Import icons in test component, verify they render, accept className, and inherit text color",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": []
@@ -18,7 +18,7 @@
         "description": "Add @keyframes marquee animation to globals.css for tech stack scrolling",
         "details": "Update `src/app/globals.css` to add marquee keyframes:\n\n**Add to bottom of file:**\n```css\n@keyframes marquee {\n  0% {\n    transform: translateX(0);\n  }\n  100% {\n    transform: translateX(-50%);\n  }\n}\n```\n\n**Also add Tailwind layer for custom animation:**\n```css\n@layer utilities {\n  .animate-marquee {\n    animation: marquee 30s linear infinite;\n  }\n}\n```\n\n**Purpose:**\n- Creates horizontal scrolling effect for tech logos\n- Smooth infinite loop animation\n- NO Framer Motion - pure CSS\n\n**Note:** Content will be duplicated in component to create seamless loop",
         "testStrategy": "Verify animation class exists, check smooth infinite scroll in browser",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": []
@@ -29,7 +29,7 @@
         "description": "Setup data files with TypeScript types for personal info, projects, and tech stack",
         "details": "Create data structure in `src/data/`:\n\n**1. src/types/index.ts:**\n```typescript\nexport type Project = {\n  id: string;\n  title: string;\n  category: string;\n  description: string;\n  tech: string[];\n  image: string;\n  demoUrl?: string;\n  repoUrl: string;\n};\n\nexport type TechStack = {\n  name: string;\n  icon: React.FC<{ className?: string }>;\n};\n\nexport type PersonalInfo = {\n  name: string;\n  title: string;\n  email: string;\n  description: string;\n  social: {\n    linkedin: string;\n    instagram: string;\n    email: string;\n  };\n};\n```\n\n**2. src/data/personal.ts:**\n- name: \"Muhammad Fatihul Iqmal\"\n- title: \"Full-Stack Developer\"\n- description: Bio from hero section\n- social links\n\n**3. src/data/projects.ts:**\n- Array of 3 projects (use placeholder data)\n- All use `/images/project.jpg` initially\n\n**4. src/data/techStack.ts:**\n- Array of tech: React, TypeScript, Node.js, Express, MongoDB, PostgreSQL, Tailwind, Git",
         "testStrategy": "Import data files, check TypeScript compiles, verify no errors",
-        "status": "pending",
+        "status": "in-progress",
         "dependencies": [
           1
         ],
@@ -163,7 +163,7 @@
     ],
     "metadata": {
       "created": "2025-11-07T02:12:09.043Z",
-      "updated": "2025-11-07T02:14:59.366Z",
+      "updated": "2025-11-07T02:19:34.773Z",
       "description": "Tasks for master context"
     }
   }
