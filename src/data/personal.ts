@@ -9,6 +9,6 @@ export const personalInfo: PersonalInfo = {
   social: {
     linkedin: 'https://linkedin.com/in/mfi-iqmal',
     instagram: 'https://instagram.com/fthliqmal',
-    email: 'mailto:fatihuliqmalzzz@gmail.com',
+    email: 'https://mail.google.com/mail/?view=cm&to=fatihuliqmalzzz@gmail.com',
   },
 };
