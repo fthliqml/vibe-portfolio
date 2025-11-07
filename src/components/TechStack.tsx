@@ -1,40 +1,58 @@
-import { techStackNames } from '@/data/techStack';
+'use client';
+
+const techLogos = [
+  { name: 'React', src: 'https://cdn.simpleicons.org/react/61DAFB' },
+  { name: 'TypeScript', src: 'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name: 'Node.js', src: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+  { name: 'Express', src: 'https://cdn.simpleicons.org/express/000000' },
+  { name: 'MongoDB', src: 'https://cdn.simpleicons.org/mongodb/47A248' },
+  { name: 'PostgreSQL', src: 'https://cdn.simpleicons.org/postgresql/4169E1' },
+  { name: 'Tailwind CSS', src: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+  { name: 'Git', src: 'https://cdn.simpleicons.org/git/F05032' },
+];
 
 export default function TechStack() {
   // Duplicate for seamless loop
-  const duplicatedTech = [...techStackNames, ...techStackNames];
+  const logosToRender = [...techLogos, ...techLogos];
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="bg-white py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
-        <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 text-center mb-12">
-          Technologies I Work With
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500">
+            Technologies I Work With
+          </h2>
+        </div>
 
         {/* Marquee Container */}
-        <div className="relative overflow-hidden">
-          {/* Left fade gradient */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-          
-          {/* Right fade gradient */}
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-
+        <div className="relative w-full overflow-hidden">
           {/* Marquee content */}
-          <div className="animate-marquee flex gap-12 items-center">
-            {duplicatedTech.map((tech, index) => (
+          <div className="flex animate-marquee">
+            {logosToRender.map((tech, index) => (
               <div
-                key={`${tech}-${index}`}
-                className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
+                key={`${tech.name}-${index}`}
+                className="flex-shrink-0 mx-6"
+                style={{ width: '160px' }}
               >
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-gray-100 rounded-lg">
-                  <span className="text-xs md:text-sm font-bold text-gray-700">
-                    {tech.substring(0, 2).toUpperCase()}
-                  </span>
+                <div className="flex justify-center items-center h-24 p-4">
+                  <img
+                    src={tech.src.replace(/([0-9A-F]{6})/i, '888888')}
+                    alt={`${tech.name} logo`}
+                    className="h-12 object-contain transition-all duration-300 filter grayscale hover:grayscale-0 transform hover:scale-110"
+                    onMouseOver={(e) => (e.currentTarget.src = tech.src)}
+                    onMouseOut={(e) =>
+                      (e.currentTarget.src = tech.src.replace(/([0-9A-F]{6})/i, '888888'))
+                    }
+                  />
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Fade gradients */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
         </div>
       </div>
     </section>
